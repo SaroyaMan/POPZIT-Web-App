@@ -18,6 +18,17 @@
             </ul>
         </nav>
         <div class="clear"></div>
+        <app-error></app-error>
     </header>
     <router-outlet></router-outlet>
 </div>
+<div id="loaderContent">
+    <div id="loader"></div>
+</div>
+
+
+<!--Usage:
+loader = $("#loaderContent");
+startAnimation: loader.fadeIn(300);
+stopAnimation: loader.fadeOut(300);
+-->

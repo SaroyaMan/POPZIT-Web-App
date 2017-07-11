@@ -1,0 +1,36 @@
+<section id="playlistContainer">
+    <h1>
+        <span>Hey {{authService.signedUser.firstName | uppercase}}!&nbsp;</span>
+        select your favoirte playlist.
+    </h1>
+    <h4>Custom Playlists</h4>
+    <section
+            class="playlistBlock"
+            *ngFor="let playlist of playlists; let i = index"
+            [ngStyle]="{'background': 'url(https://www.gravatar.com/avatar/' + playlist.user.gravatarHash + '?s=130) no-repeat'}">
+        <section (click)="loadPlaylist(playlist)">
+            <span>{{playlist.user.firstName}} {{playlist.user.lastName}}</span>
+        </section>
+        <button id="deletePlaylistButton" *ngIf="playlist.user.id === userId"
+                (click)="deletePlaylist(playlist, i)">
+        </button>
+    </section>
+</section>
+
+<section id="playlistDisplay" *ngIf="selectedPlaylist">
+    <h4>{{selectedPlaylist.user.firstName}} {{selectedPlaylist.user.lastName}}'s Playlist</h4>
+    <p><span>Contact: </span>{{selectedPlaylist.user.email}}</p>
+    <section *ngFor="let song of songs" class="songBlock">
+        <div class="songButtons">
+            <button type="button" (click)="playSong(song)"></button>
+            <button type="button" (click)="addToPlaylist(song)"></button>
+        </div>
+        <div class="songDetails">
+            <p>{{song.name}}</p>
+            <span>{{song.artist}}</span>
+        </div>
+        <div class="clear"></div>
+    </section>
+    <button id="assignPlaylist" type="button" (click)="assignPlaylist(selectedPlaylist)">ASSIGN PLAYLIST</button>
+
+</section>

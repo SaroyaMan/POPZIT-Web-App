@@ -1,41 +1,20 @@
 <aside>
     <ul>
-        <li><a class="bold" routerLink="/dashboard" routerLinkActive="underline">Radio</a></li>
-        <li><a class="bold" href="#">Your Music</a></li>
-        <li><a class="bold" href="#">Playlists</a></li>
+        <li><a class="bold" [routerLink]="['radio']" routerLinkActive="underline">Radio</a></li>
+        <li><a class="bold" [routerLink]="['music']" routerLinkActive="underline">Your Music</a></li>
+        <li><a class="bold" [routerLink]="['playlists']" routerLinkActive="underline">Playlists</a></li>
+        <!--<li *ngIf="isAdmin()">-->
+            <!--<a class="bold" [routerLink]="['manage']" routerLinkActive="underline">-->
+                <!--Publish Playlist-->
+            <!--</a>-->
+        <!--</li>-->
         <li class="seperator"><a href="#">Discover</a></li>
         <li><a href="#">Concerts</a></li>
     </ul>
 </aside>
-<section id="albumsDisplay">
-    <h1>
-        <span>Hey {{authService.signedUser.firstName | uppercase}}!&nbsp;</span>
-        welcome to POPZIT.
-    </h1>
-    <h4>Custom Playlists</h4>
-    <section
-            *ngFor="let album of albums"
-            class="albumBlock"
-            [ngStyle]="{'background': 'url(' + album.imagePath + ') no-repeat'}"
-            (click)="loadAlbum(album)">
-        <span>{{album.artist}}</span>
-    </section>
-</section>
-<section id="playlistDisplay">
-    <h4><ng-template [ngIf]="selectedAlbum">{{selectedAlbum.artist}}</ng-template> Playlist</h4>
-    <section *ngFor="let song of songs" class="songBlock">
-        <div class="songButtons">
-            <button type="button" (click)="playSong(song)"></button>
-            <button type="button" (click)="addToPlaylist(song)"></button>
-        </div>
-        <div class="songDetails">
-            <p>{{song.name}}</p>
-            <span>{{song.artist.name}}</span>
-        </div>
-        <div class="clear"></div>
-    </section>
-</section>
 
-<app-player *ngIf="selectedSong" [song]="selectedSong"></app-player>
+<router-outlet></router-outlet>
+
+<app-player *ngIf="musicService.selectedSong" [song]="musicService.selectedSong"></app-player>
 
 <div class="clear"></div>

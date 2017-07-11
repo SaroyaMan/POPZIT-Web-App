@@ -46,13 +46,14 @@ body {
 }
 
 .dashboardBackground {
+    background: black;
     background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
-    url("assets/images/dashboard_background.png") no-repeat;
+    url("assets/images/dashboard_background.png") no-repeat center right fixed;
     background-blend-mode: screen;
-    background-position: inherit;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    background-size: 83%;
 }
 
 .clear {
@@ -66,4 +67,38 @@ nav, aside, section, article, header, footer, main {
 a {
     text-decoration: none;
     color: white;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loader {
+    display: block;
+    border: 16px solid white;
+    border-top: 16px solid #0071bc;
+    border-bottom: 16px solid #f18021;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    z-index: 100;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#loaderContent {
+    background: #e9e9e9;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
 }

@@ -1,0 +1,47 @@
+<section id="manageMusic">
+    <h1>Your Current Music</h1>
+    <ul>
+        <li *ngFor="let song of playlist; let i = index">
+            <button (click)="removeSongFromPlaylist(i)"></button>
+            <span (click)="playSongByIndex(i)">
+                {{i+1}}. {{song.artist}} - {{song.name}}
+            </span>
+            <span *ngIf="i === this.musicService.getCurrentSongIndex()">(Currently Playing)</span>
+        </li>
+    </ul>
+    <button type="button" class="formButton" [disabled]="playlist.length === 0"
+            (click)="savePlaylist()">
+        SAVE MY LIST
+    </button>
+
+    <button type="button" class="formButton" [disabled]="playlist.length === 0"
+            (click)="publishPlaylist()">
+        PUBLISH MY LIST
+    </button>
+
+</section>
+<section id="addSong">
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <h1>Search for a song</h1>
+        <div>
+            <input type="text" name="artist"  placeholder="artist name *" formControlName="artist">
+        </div>
+
+        <div>
+            <input type="text" name="track" placeholder="track name *" formControlName="track">
+        </div>
+        <button type="submit" class="formButton" [disabled]="!form.valid">SEARCH</button>
+    </form>
+
+    <section id="searchResults">
+        <span id="error">{{errMsg}}</span>
+        <section *ngIf="searchedSong">
+            <span>Your Result</span>
+            <div class="songButtons">
+                <button type="button" (click)="playSong(searchedSong)"></button>
+                <button type="button" (click)="addToPlaylist(searchedSong)"></button>
+                <p>{{searchedSong.artist}} - {{searchedSong.name}}</p>
+            </div>
+        </section>
+    </section>
+</section>

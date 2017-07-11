@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -21,6 +21,11 @@ import { SafePipe } from './safe.pipe';
 import {MomentModule} from "angular2-moment";
 import { DurationPipe } from './duration.pipe';
 import { ShortenPipe } from './shorten.pipe';
+import { RadioComponent } from './dashboard/radio/radio.component';
+import { MusicManageComponent } from './dashboard/music-manage/music-manage.component';
+import { PlaylistsComponent } from './dashboard/playlists/playlists.component';
+import { ErrorComponent } from './shared/alert-box/alert-box.component';
+import {AlertService} from "./shared/alert-box/alert.service";
 
 
 
@@ -34,7 +39,11 @@ import { ShortenPipe } from './shorten.pipe';
         PlayerComponent,
         SafePipe,
         DurationPipe,
-        ShortenPipe
+        ShortenPipe,
+        RadioComponent,
+        MusicManageComponent,
+        PlaylistsComponent,
+        ErrorComponent
     ],
     imports: [
         BrowserModule,
@@ -42,11 +51,14 @@ import { ShortenPipe } from './shorten.pipe';
         HttpModule,
         routing,
         YoutubePlayerModule,
-        MomentModule
+        MomentModule,
+        ReactiveFormsModule,
+
     ],
     providers: [
         AuthService,
         MusicService,
+        AlertService,
         //Allow refresing the app in production
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         ],

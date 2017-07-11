@@ -1,0 +1,156 @@
+#playlistContainer {
+    float: left;
+    height: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: "Futura PT", sans-serif;
+    width: 55%;
+    padding-left: 6%;
+}
+
+h1,h4 {
+    color: white;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h1 span {
+    color:#ffed00;
+}
+
+h4 {
+    margin-top: 2%;
+    font-weight: lighter;
+}
+
+
+.playlistBlock {
+    display: inline-flex;
+    width: 130px;
+    height: 130px;
+    border: 3px solid #ffed00;
+    margin-right: 20px;
+    margin-top: 40px;
+
+    justify-content: center;
+    background-size: cover;
+    transition: filter linear 0.2s;
+
+    line-height: 290px;
+    cursor: pointer;
+    position: relative;
+
+}
+
+.playlistBlock span {
+    font-weight: lighter;
+    text-align: center;
+    color: #ffed00;
+}
+
+.playlistBlock:hover {
+    filter: brightness(50%);
+    /*background: url('../../assets/images/play.png') no-repeat;*/
+}
+
+#deletePlaylistButton {
+    position: absolute;
+    display: block;
+    background: url('../../../assets/images/x-button.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    left: -10px;
+    top: -10px;
+}
+
+
+#playlistDisplay {
+    font-family: "Futura PT", sans-serif;
+    float: left;
+    height: 100%;
+    width: 22%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#playlistDisplay > h4 {
+    margin-top: 13.5%;
+    margin-bottom: 3%;
+}
+
+#playlistDisplay > p {
+    color: white;
+    font-size: small;
+}
+
+#playlistDisplay p span {
+    text-decoration: underline;
+}
+
+.songBlock {
+    color: #ffed00;
+}
+
+.songButtons {
+    float: left;
+    width: 70px;
+    margin-top: 15px;
+
+}
+
+.songButtons > button {
+    display: inline-block;
+    background: url("../../../assets/images/play_button.png") no-repeat center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.songButtons > button:nth-child(2) {
+    background: url("../../../assets/images/plus_button.png") no-repeat center;
+}
+
+.songDetails {
+    float: left;
+    margin-top: 15px;
+}
+
+.songDetails p {
+    font-size: smaller;
+    color: #ffed00;
+}
+
+.songDetails span {
+    font-size: smaller;
+    opacity: 0.6;
+    position: relative;
+    top: -5px;
+}
+
+#assignPlaylist {
+    display: block;
+    outline: none;
+    border: 6px solid #ffed00;
+    background: transparent;
+    width: 200px;
+    height: 50px;
+    margin-top: 2%;
+    position: relative;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+#assignPlaylist:hover {
+    background: #ffed00;
+    color: black;
+}

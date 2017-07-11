@@ -15,6 +15,8 @@ export class SigninComponent implements OnInit, OnDestroy {
     bodyClasses = "loginBackground";
     form:FormGroup;
 
+    loader = $("#loaderContent");
+
     constructor(private authService:AuthService,
                 private router:Router) { }
 
@@ -31,12 +33,16 @@ export class SigninComponent implements OnInit, OnDestroy {
         this.authService.signin(user)
             .subscribe(
                 (data) => {
+                    this.loader.fadeOut(300);
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('user', JSON.stringify(data.user));
                     localStorage.setItem('userId', data.userId);
                     this.router.navigateByUrl('/');
                 },
-                (error) => console.log(error)
+                (error) => {
+                    this.loader.fadeOut(300);
+                    console.log(error);
+                }
             );
         this.form.reset();
     }

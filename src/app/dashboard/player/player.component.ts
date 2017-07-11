@@ -29,7 +29,7 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
 
 
     ngOnInit() {
-        this.startInterval();
+        // this.startInterval();
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -39,14 +39,13 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
             this.isPlayed = true;
         }
         clearInterval(this.songDurationInterval);
-
+        this.currTime = 0;
         this.startInterval();
         $('progress').val(0);
     }
 
     ngOnDestroy() {
         clearInterval(this.songDurationInterval);
-
     }
 
     startInterval() {
@@ -57,10 +56,11 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
                     this.currTime = this.player.getCurrentTime();
                     progress.val(Math.floor(Math.round((this.currTime / this.player.getDuration())*100)));
                 }
-                else {
+                if(this.player.getCurrentTime() === this.player.getDuration()) {
                     clearInterval(this.songDurationInterval);
+                    this.nextSong();
                 }
-            }, 1000);
+            }, 700);
     }
 
 
@@ -76,6 +76,7 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
 
     savePlayer(player) {
         this.player = player;
+        this.startInterval();
         this.playVideo();
     }
 
@@ -125,12 +126,14 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     prevSong() {
-        this.song = this.musicService.getPrevSong();
+        if(this.musicService.isPlaylistEmpty()) return;
+        this.musicService.getPrevSong();
         this.ngOnChanges(null);
     }
 
     nextSong() {
-        this.song = this.musicService.getNextSong();
+        if(this.musicService.isPlaylistEmpty()) return;
+        this.musicService.getNextSong();
         this.ngOnChanges(null);
     }
 }

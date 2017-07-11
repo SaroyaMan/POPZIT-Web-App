@@ -3,11 +3,13 @@ import {Injectable} from "@angular/core";
 import {Http, Headers, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/Rx';
+import * as $ from 'jquery';
 
 @Injectable()
 export class AuthService {
 
     signedUser:User = null;
+    loader = $("#loaderContent");
 
     constructor(private http:Http) {
         if(this.isLoggedIn()) {
@@ -18,13 +20,15 @@ export class AuthService {
                 user.firstName,
                 user.lastName,
                 user.birthdate,
-                user.gravatarHash
+                user.gravatarHash,
+                user.isAdmin
             );
         }
     }
 
 
     signup(user:User) {
+        this.loader.fadeIn(300);
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/user', body, {headers: headers})
@@ -33,6 +37,7 @@ export class AuthService {
     }
 
     signin(user:User) {
+        this.loader.fadeIn(300);
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/user/signin', body, {headers: headers})
@@ -55,7 +60,13 @@ export class AuthService {
         this.signedUser = null;
     }
 
+
+    //noinspection JSMethodCanBeStatic
     isLoggedIn() {
         return localStorage.getItem('token') !== null && localStorage.getItem('user') !== null;
+    }
+
+    isAdmin() {
+        return this.isLoggedIn() && this.signedUser.isAdmin;
     }
 }

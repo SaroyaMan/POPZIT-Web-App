@@ -22,6 +22,10 @@ export class SignupComponent implements OnInit, OnDestroy {
     days:number[] = [];
     months;
     Month = Month;
+
+    loader = $("#loaderContent");
+
+
     constructor(private authService:AuthService,
                 private router:Router) {
         let nowYear = new Date().getFullYear();
@@ -67,7 +71,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
         this.authService.signup(user).subscribe(
             data => console.log(data),
-            error => console.log(error)
+            error => console.log(error),
+            () => this.loader.fadeOut(300)
         );
         this.form.reset();
         this.router.navigate(['/']);

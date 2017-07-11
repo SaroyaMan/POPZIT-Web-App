@@ -55,7 +55,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
             }
         }
         console.log(selectedSubgenres);
-        this.musicService.initPlaylist(selectedSubgenres);
-        this.router.navigate(['/dashboard']);
+        this.musicService.initSelectedAlbums(selectedSubgenres);
+        this.router.navigate(['/dashboard/radio']);
     }
 }

@@ -1,0 +1,29 @@
+<section id="albumsDisplay">
+    <h1>
+        <span>Hey {{authService.signedUser.firstName | uppercase}}!&nbsp;</span>
+        welcome to POPZIT.
+    </h1>
+    <h4>Custom Playlists</h4>
+    <section
+            *ngFor="let album of albums"
+            class="albumBlock"
+            [ngStyle]="{'background': 'url(' + album.imagePath + ') no-repeat'}"
+            (click)="loadAlbum(album)">
+        <span>{{album.artist}}</span>
+    </section>
+</section>
+
+<section id="playlistDisplay">
+    <h4><ng-template [ngIf]="selectedAlbum">{{selectedAlbum.artist}} Playlist</ng-template></h4>
+    <section *ngFor="let song of songs" class="songBlock">
+        <div class="songButtons">
+            <button type="button" (click)="playSong(song)"></button>
+            <button type="button" (click)="addToPlaylist(song)"></button>
+        </div>
+        <div class="songDetails">
+            <p>{{song.name}}</p>
+            <span>{{song.artist}}</span>
+        </div>
+        <div class="clear"></div>
+    </section>
+</section>

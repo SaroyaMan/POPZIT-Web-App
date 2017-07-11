@@ -1,0 +1,143 @@
+#manageMusic, #addSong {
+    float: left;
+    height: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: "Futura PT", sans-serif;
+}
+
+#manageMusic {
+    width: 55%;
+    padding-left: 6%;
+}
+
+ul {list-style-type: none}
+
+h1,h4, ul > li {
+    color: white;
+}
+
+h1 {
+    font-size: 24px;
+    color:#ffed00;
+    margin-bottom: 3%;
+}
+
+h4 {
+    margin-top: 2%;
+    font-weight: lighter;
+}
+
+li > span:nth-child(2) {
+    cursor: pointer;
+    font-size: large;
+}
+
+li button {
+    display: inline-block;
+    background: url("../../../assets/images/remove_button.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+li > span:nth-child(2):hover {
+    text-decoration: underline
+}
+
+li > span:nth-child(3) {
+    color: #ffed00;
+    font-weight: bold;
+}
+
+.formButton {
+    display: block;
+    outline: none;
+    border: 6px solid #ffed00;
+    background: transparent;
+    width: 200px;
+    height: 50px;
+    margin-top: 2%;
+    position: relative;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.formButton:hover {
+    background: #ffed00;
+    color: black;
+}
+
+
+#addSong {
+    width: 22%;
+}
+
+form button {
+    width: 202px;
+}
+
+button[disabled] {
+    background: grey;
+    border: 6px solid gray;
+    cursor: not-allowed;
+}
+
+button[disabled]:hover {
+    background: grey;
+    color: white;
+}
+
+input {
+    border: 1px solid white;
+    outline: none;
+    background: none;
+    width: 160px;
+    height: 40px;
+    margin: 10px 10px 5px 0;
+    color: white;
+    padding-left: 40px;
+    display: inline-block;
+}
+input:focus {
+    border: 1px solid #016bf8;
+}
+
+#error, #searchResults section span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: lightcoral;
+}
+
+#searchResults {color: #ffed00}
+
+#searchResults button {
+    display: inline-block;
+    background: url("../../../assets/images/play_button.png") no-repeat center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#searchResults button:nth-child(2) {
+    background: url("../../../assets/images/plus_button.png") no-repeat center;
+}
+
+#searchResults section span {
+    color: white;
+}
+
+#searchResults p {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 1%;
+    font-size: large;
+}
