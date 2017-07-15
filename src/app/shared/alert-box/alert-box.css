@@ -36,11 +36,13 @@
 
 /* Modal Content */
 .modal-content {
+    color: #979797;
+    font-size: large;
+    font-family: "Futura PT", sans-serif;
     position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 0;
-    border: 1px solid #888;
     width: 564px;
     top: 10%;
     height: 200px;

@@ -6,6 +6,8 @@ import {Observable} from "rxjs/Observable";
 import {User} from "../user.model";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {AlertService} from "../../shared/alert-box/alert.service";
+import {Alert} from "../../shared/alert-box/alert.model";
 
 @Component({
     selector: 'app-signup',
@@ -27,7 +29,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
 
     constructor(private authService:AuthService,
-                private router:Router) {
+                private router:Router,
+                private alertService:AlertService) {
         let nowYear = new Date().getFullYear();
         for(let i = 1948; i <= nowYear; i++) {
             this.years.push(i);
@@ -70,12 +73,19 @@ export class SignupComponent implements OnInit, OnDestroy {
         );
 
         this.authService.signup(user).subscribe(
-            data => console.log(data),
-            error => console.log(error),
+            (data) => {
+                console.log(data);
+                this.alertService.handleAlert(new Alert('User Succesfully Created', `${user.firstName} ${user.lastName} has been created! You are welcome to login, and start POP it!`,))
+                this.form.reset();
+                this.router.navigate(['/']);
+            },
+            (error) => {
+                console.log(error);
+                this.alertService.handleAlert(new Alert('Error', `${user.firstName} ${user.lastName} could not be created, mail is probably exists`, '#F64222'))
+            },
             () => this.loader.fadeOut(300)
         );
-        this.form.reset();
-        this.router.navigate(['/']);
+
     }
 
     passwordValidate(control:FormControl):Promise<any> | Observable<any> {

@@ -3,6 +3,9 @@ import {MusicService} from "../../shared/music.service";
 import {Song} from "../../shared/song.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../auth/auth.service";
+import {Params, ActivatedRoute} from "@angular/router";
+import {AlertService} from "../../shared/alert-box/alert.service";
+import {Alert} from "../../shared/alert-box/alert.model";
 
 @Component({
     selector: 'app-music-manage',
@@ -19,16 +22,30 @@ export class MusicManageComponent implements OnInit {
     errMsg = '';
     isAdmin = false;
 
+    editMode = false;
+    playlistId = '';
+
     constructor(public musicService:MusicService,
-                private authService:AuthService) {}
+                private authService:AuthService,
+                private route:ActivatedRoute,
+                private alertService:AlertService) {}
 
     ngOnInit() {
+
         this.form = new FormGroup({
             artist: new FormControl(null, Validators.required),
             track: new FormControl(null, Validators.required),
         });
         this.playlist = this.musicService.getPlaylist();
         this.isAdmin = this.authService.isAdmin();
+
+        this.route.params
+            .subscribe(
+                (params:Params) => {
+                    this.playlistId = params['playlistId'];
+                    this.editMode = params['playlistId'] != null;
+                }
+            );
     }
 
     playSongByIndex(index:number) {
@@ -73,11 +90,13 @@ export class MusicManageComponent implements OnInit {
         this.musicService.savePlaylist().subscribe(
             (response) => {
                 console.log('Playlist saved succesfully!');
-                console.log(response);
+                this.alertService.handleAlert(new Alert('Playlist succesfully saved', 'Your playlist saved!'))
             },
             (err) => {
                 console.log('Failed to save playlist!');
-                console.log(err);
+                this.alertService.handleAlert(new Alert('Failed to save playlist',
+                    'Your playlist could not be saved due to internal error of the server!',
+                    '#F64222'));
             });
     }
 
@@ -85,11 +104,29 @@ export class MusicManageComponent implements OnInit {
         this.musicService.publishPlaylist().subscribe(
             (response) => {
                 console.log('Playlist published succesfully!');
-                console.log(response);
+                this.alertService.handleAlert(new Alert('Playlist succesfully published',
+                    `Your playlist published! You will see it soon under 'Playlists'`));
             },
             (err) => {
-                console.log('Failed to save playlist!');
-                console.log(err);
+                console.log('Failed to publish playlist!');
+                this.alertService.handleAlert(new Alert('Failed to publish playlist',
+                    'Your playlist could not be published due to internal error of the server!',
+                    '#F64222'));
+            });
+    }
+
+    editPlaylist() {
+        this.musicService.editPlaylist(this.playlistId).subscribe(
+            (response) => {
+                console.log('Playlist edited succesfully!');
+                this.alertService.handleAlert(new Alert('Playlist succesfully edited',
+                    `Your playlist edited! You will see your changes soon under 'Playlists'`));
+            },
+            (err) => {
+                console.log('Failed to edit playlist!');
+                this.alertService.handleAlert(new Alert('Failed to edit playlist',
+                    'Your playlist could not be edited due to internal error of the server!',
+                    '#F64222'));
             });
     }
 

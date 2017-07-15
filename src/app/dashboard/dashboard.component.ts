@@ -17,9 +17,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     selectedSong:Song;
 
     constructor(public authService:AuthService,
-                public musicService:MusicService) {}
+                public musicService:MusicService,
+                private router:Router) {}
 
     ngOnInit() {
+        if(!this.authService.isLoggedIn()) {
+            this.router.navigate(['']);
+        }
+
         $('body').addClass(this.bodyClass);
         this.selectedSong = this.musicService.selectedSong;
         this.musicService.initPlaylist()

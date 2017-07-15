@@ -2,12 +2,12 @@
 <div id="myModal" class="modal" [ngStyle]="{'display':displayed}">
     <!-- Modal content -->
     <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" [ngStyle]="{'background-color': alert?.color}">
             <span id="close" (click)="onErrorHandled()">&times;</span>
-            <h2>{{alert.title}}</h2>
+            <h2>{{alert?.title}}</h2>
         </div>
         <div class="modal-body">
-            <p>{{alert.message}}</p>
+            <p>{{alert?.message}}</p>
         </div>
         <!--<div class="modal-footer">-->
             <!--<h3>Modal Footer</h3>-->

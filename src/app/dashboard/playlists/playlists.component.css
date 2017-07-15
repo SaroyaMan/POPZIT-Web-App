@@ -55,17 +55,30 @@ h4 {
     /*background: url('../../assets/images/play.png') no-repeat;*/
 }
 
-#deletePlaylistButton {
+#adminOptions button {
     position: absolute;
     display: block;
-    background: url('../../../assets/images/x-button.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    outline: none;
-    border: none;
-    cursor: pointer;
     left: -10px;
     top: -10px;
+}
+
+#deletePlaylistButton {
+    outline: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: url('../../../assets/images/x-button.png') no-repeat;
+}
+
+#editPlaylistButton {
+    outline: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 20%;
+    background: url('../../../assets/images/edit.png') no-repeat;
 }
 
 

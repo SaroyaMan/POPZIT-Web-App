@@ -5,7 +5,7 @@ import {AlertService} from "./alert.service";
 
 
 @Component({
-    selector: 'app-error',
+    selector: 'app-alert-box',
     templateUrl: './alert-box.component.html',
     styleUrls: ['./alert-box.css']
 })
@@ -41,6 +41,6 @@ export class ErrorComponent implements OnInit {
                     this.displayed = 'block';
                 }
             );
-        this.alert = new Alert('some header', 'some body');
+        // this.alert = new Alert('some header', 'some body');
     }
 }

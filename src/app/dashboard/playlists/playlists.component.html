@@ -11,9 +11,10 @@
         <section (click)="loadPlaylist(playlist)">
             <span>{{playlist.user.firstName}} {{playlist.user.lastName}}</span>
         </section>
-        <button id="deletePlaylistButton" *ngIf="playlist.user.id === userId"
-                (click)="deletePlaylist(playlist, i)">
-        </button>
+        <section *ngIf="playlist.user.id === userId" id="adminOptions">
+            <button id="deletePlaylistButton" (click)="deletePlaylist(playlist, i)"></button>
+            <button id="editPlaylistButton" (click)="editPlaylist(playlist,i)"></button>
+        </section>
     </section>
 </section>
 
@@ -32,5 +33,4 @@
         <div class="clear"></div>
     </section>
     <button id="assignPlaylist" type="button" (click)="assignPlaylist(selectedPlaylist)">ASSIGN PLAYLIST</button>
-
 </section>

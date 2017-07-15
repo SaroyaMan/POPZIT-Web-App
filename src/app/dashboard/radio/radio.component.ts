@@ -25,6 +25,7 @@ export class RadioComponent implements OnInit {
     }
 
     loadAlbum(album:Album) {
+        this.songs = [];
         let i = 0;
         for(let song of album.songs) {
             this.songs[i++] = new Song(song.name, (<any>(song.artist)).name);

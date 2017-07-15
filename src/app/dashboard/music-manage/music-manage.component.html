@@ -14,9 +14,13 @@
         SAVE MY LIST
     </button>
 
-    <button type="button" class="formButton" [disabled]="playlist.length === 0"
+    <button *ngIf="!editMode && isAdmin" type="button" class="formButton" [disabled]="playlist.length === 0"
             (click)="publishPlaylist()">
         PUBLISH MY LIST
+    </button>
+    <button *ngIf="editMode && isAdmin" type="button" class="formButton" [disabled]="playlist.length === 0"
+            (click)="editPlaylist()">
+        SAVE CHANGES
     </button>
 
 </section>

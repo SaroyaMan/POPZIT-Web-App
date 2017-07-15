@@ -14,6 +14,7 @@ const APP_ROUTES:Routes = [
     {path: 'dashboard', component: DashboardComponent, children: [
         {path: 'radio', component: RadioComponent},
         {path: 'music', component: MusicManageComponent},
+        {path: 'music/:playlistId/edit', component: MusicManageComponent},
         {path: 'playlists', component: PlaylistsComponent}
     ]},
     {path: 'auth', component: AuthComponent, loadChildren: './auth/auth.module#AuthModule'}

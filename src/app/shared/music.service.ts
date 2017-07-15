@@ -123,8 +123,9 @@ export class MusicService {
             .map( (response) => {
                 const searchSongJson = response.json();
                 console.log(searchSongJson);
-                if(searchSongJson.imagePath === 'unknown') return null;
-                return new Song(track, artist, null, new Album(artist, searchSongJson.album, searchSongJson.imagePath))
+                let imgPath = searchSongJson.imagePath === 'unknown' ?
+                    '/assets/images/unknown_album.png' : searchSongJson.imagePath;
+                return new Song(track, artist, null, new Album(artist, searchSongJson.album, imgPath))
             })
             .catch( (error:Response) =>
                 Observable.throw(error.json())
@@ -183,6 +184,28 @@ export class MusicService {
                 return response.json();
             } )
             .catch( (error:Response) => Observable.throw(error));
+    }
+
+    editPlaylist(id:string) {
+        let tempPlaylist = this.playlist.slice();
+        for(let song of tempPlaylist) {
+            song.album.songs = null;
+            song.album.artist = null;
+        }
+
+        let playlistBody = {
+            id: id,
+            songs: tempPlaylist
+        };
+
+        const body = JSON.stringify(playlistBody);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post('http://localhost:3000/playlist/updateAdminPlaylist', body, {headers: headers})
+            .map( (response:Response) => {
+                return response.json();
+            } )
+            .catch( (error:Response) => Observable.throw(error));
+
     }
 
     getPublicPlaylists() {

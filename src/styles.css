@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Futura PT Heavy;
+    src: url("assets/fonts/FuturaPTExtraBold.otf");
+}
+
+@font-face {
+    font-family: Futura PT;
+    src: url("assets/fonts/FuturaPTBoldOblique.otf");
+}
+
+
 
 * {
     margin: 0;
@@ -17,7 +28,7 @@ body {
     background-size: cover;
 
     /*font-family: , serif;*/
-    font-family: "Futura PT Heavy", sans-serif;
+    font-family: Futura PT Heavy, sans-serif;
 }
 
 .loginBackground {

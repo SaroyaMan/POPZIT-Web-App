@@ -3,6 +3,7 @@ import {Alert} from "./alert.model";
 
 
 export class AlertService {
+
     alertOccured = new EventEmitter<Alert>();
 
     handleAlert(alert:Alert) {

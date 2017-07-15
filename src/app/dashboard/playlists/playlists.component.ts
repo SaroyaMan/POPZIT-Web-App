@@ -4,6 +4,8 @@ import {MusicService} from "../../shared/music.service";
 import {Playlist} from "../../shared/playlist.model";
 import {Song} from "../../shared/song.model";
 import {Router} from "@angular/router";
+import {AlertService} from "../../shared/alert-box/alert.service";
+import {Alert} from "../../shared/alert-box/alert.model";
 
 @Component({
     selector: 'app-playlists',
@@ -20,7 +22,8 @@ export class PlaylistsComponent implements OnInit {
 
     constructor(public authService:AuthService,
                 private musicService:MusicService,
-                private router:Router) { }
+                private router:Router,
+                private alertService:AlertService) { }
 
     ngOnInit() {
         this.musicService.getPublicPlaylists()
@@ -33,7 +36,6 @@ export class PlaylistsComponent implements OnInit {
     loadPlaylist(playlist:Playlist) {
         this.songs = playlist.songs;
         this.selectedPlaylist = playlist;
-        console.log(this.selectedPlaylist);
     }
 
     assignPlaylist(playlist:Playlist) {
@@ -42,10 +44,23 @@ export class PlaylistsComponent implements OnInit {
     }
 
     deletePlaylist(playlist:Playlist, index:number) {
+
         this.musicService.deletePlaylist(playlist)
-            .subscribe( (res) => {
-                this.playlists.splice(index);
-            });
+            .subscribe(
+                (res) => {
+                    this.playlists.splice(index);
+                    this.alertService.handleAlert(new Alert('Playlist succesfully deleted', 'playlist deleted!'))
+                },
+                (err) => {
+                    this.alertService.handleAlert(new Alert('Failed to delete playlist',
+                        'Your playlist could not be deleted due to internal error of the server!',
+                        '#F64222'));
+                });
+    }
+
+    editPlaylist(playlist:Playlist, index:number) {
+        this.musicService.setPlaylist(playlist.songs);
+        this.router.navigate([`/dashboard/music/${playlist.id}/edit`]);
     }
 
     playSong(song:Song) {

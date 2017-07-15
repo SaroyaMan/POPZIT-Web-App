@@ -34,7 +34,6 @@ button {
 }
 
 #songDetails {
-    /*width: 10%;*/
     display: inline-block;
     margin-left: 1%;
     margin-top: 1%;
@@ -60,7 +59,7 @@ youtube-player {
 #seekBar {
     display: inline-block;
     margin-right: 3%;
-    width: 27%;
+    width: 35%;
     margin-left: 15%;
 }
 
