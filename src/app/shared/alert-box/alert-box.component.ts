@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import {Alert} from './alert.model';
 import {AlertService} from "./alert.service";
 

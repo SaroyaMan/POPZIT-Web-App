@@ -47,7 +47,7 @@ export class MusicService {
 
     initPlaylist() {
         let userId = localStorage.getItem('userId');
-        return this.http.get(`http://localhost:3000/music/playlist?userId=${userId}`)
+        return this.http.get(`http://localhost:3000/playlist/getPlaylist?userId=${userId}`)
             .map( (response) => {
                 let playlistJson = response.json().songs;
                 let songs:Song[] = [];
@@ -149,7 +149,7 @@ export class MusicService {
         };
         const body = JSON.stringify(playlistBody);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/music/savePlaylist', body, {headers: headers})
+        return this.http.post('http://localhost:3000/playlist/savePlaylist', body, {headers: headers})
             .map( (response:Response) => {
                 return response.json();
             } )
@@ -178,7 +178,7 @@ export class MusicService {
         };
         const body = JSON.stringify(playlistBody);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/music/publishPlaylist', body, {headers: headers})
+        return this.http.post('http://localhost:3000/playlist/publishPlaylist', body, {headers: headers})
             .map( (response:Response) => {
                 return response.json();
             } )
@@ -186,7 +186,7 @@ export class MusicService {
     }
 
     getPublicPlaylists() {
-        return this.http.get(`http://localhost:3000/music/allAdminPlaylists`)
+        return this.http.get(`http://localhost:3000/playlist/allAdminPlaylists`)
             .map( (response) => {
                 const playlistsJson = response.json();
                 let playlists:Playlist[] = [];
@@ -203,7 +203,7 @@ export class MusicService {
     deletePlaylist(playlist:Playlist) {
         const body = JSON.stringify({id: playlist.id});
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/music/removeAdminPlaylist', body, {headers: headers})
+        return this.http.post('http://localhost:3000/playlist/removeAdminPlaylist', body, {headers: headers})
             .map( (response) => {
                 return response.json();
             })
