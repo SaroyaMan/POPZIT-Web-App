@@ -88,8 +88,8 @@ a {
 #loader {
     display: block;
     border: 16px solid white;
-    border-top: 16px solid #0071bc;
-    border-bottom: 16px solid #f18021;
+    border-top: 16px solid #ffed00;
+    border-bottom: 16px solid #f60304;
     border-radius: 50%;
     width: 120px;
     height: 120px;

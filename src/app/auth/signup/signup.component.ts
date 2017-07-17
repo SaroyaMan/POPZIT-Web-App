@@ -25,9 +25,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     months;
     Month = Month;
 
-    loader = $("#loaderContent");
-
-
     constructor(private authService:AuthService,
                 private router:Router,
                 private alertService:AlertService) {
@@ -61,6 +58,10 @@ export class SignupComponent implements OnInit, OnDestroy {
     }
 
     onSubmit() {
+
+        let loader = $("#loaderContent");
+        loader.fadeIn(300);
+
         let birthdate = new Date(this.form.value.year,
                                  this.form.value.month-1,
                                  this.form.value.day);
@@ -75,15 +76,19 @@ export class SignupComponent implements OnInit, OnDestroy {
         this.authService.signup(user).subscribe(
             (data) => {
                 console.log(data);
-                this.alertService.handleAlert(new Alert('User Succesfully Created', `${user.firstName} ${user.lastName} has been created! You are welcome to login, and start POP it!`,))
+                this.alertService.handleAlert(new Alert('User Succesfully Created',
+                    `${user.firstName} ${user.lastName} has been created! You are welcome to login, and start POP it!`,));
                 this.form.reset();
+                loader.fadeOut(300);
                 this.router.navigate(['/']);
             },
             (error) => {
                 console.log(error);
-                this.alertService.handleAlert(new Alert('Error', `${user.firstName} ${user.lastName} could not be created, mail is probably exists`, '#F64222'))
-            },
-            () => this.loader.fadeOut(300)
+                this.alertService.handleAlert(new Alert('Error',
+                    `${user.firstName} ${user.lastName} could not be created, mail is probably exists`,
+                    '#F64222'));
+                loader.fadeOut(300);
+            }
         );
 
     }

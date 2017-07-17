@@ -17,7 +17,6 @@ export class SigninComponent implements OnInit, OnDestroy {
     bodyClasses = "loginBackground";
     form:FormGroup;
 
-    loader = $("#loaderContent");
 
     constructor(private authService:AuthService,
                 private router:Router,
@@ -32,11 +31,12 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
 
     onSubmit() {
+        let loader = $("#loaderContent");
+        loader.fadeIn(300);
         const user = new User(this.form.value.email, this.form.value.password);
         this.authService.signin(user)
             .subscribe(
                 (data) => {
-                    this.loader.fadeOut(300);
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('user', JSON.stringify(data.user));
                     localStorage.setItem('userId', data.userId);
@@ -44,12 +44,11 @@ export class SigninComponent implements OnInit, OnDestroy {
                     this.router.navigateByUrl('/');
                 },
                 (error) => {
-                    this.loader.fadeOut(300);
+                    loader.fadeOut(300);
                     console.log(error);
                     this.alertService.handleAlert(new Alert('Error', `email or password is wrong, please try again`, '#F64222'))
 
-                }
-            );
+                });
         this.form.reset();
     }
 

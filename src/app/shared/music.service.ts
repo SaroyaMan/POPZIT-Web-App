@@ -29,7 +29,7 @@ export class MusicService {
     }
 
     getSubgenres() {
-        return this.http.get('http://localhost:3000/music/defaultSubgenres')
+        return this.http.get('https://popzit-ws.herokuapp.com/music/defaultSubgenres')
             .map( (response) => {
                 const subgenresJson = response.json();
                 let transformedSubgenres:Subgenre[] = [];
@@ -47,7 +47,7 @@ export class MusicService {
 
     initPlaylist() {
         let userId = localStorage.getItem('userId');
-        return this.http.get(`http://localhost:3000/playlist/getPlaylist?userId=${userId}`)
+        return this.http.get(`https://popzit-ws.herokuapp.com/playlist/getPlaylist?userId=${userId}`)
             .map( (response) => {
                 let playlistJson = response.json().songs;
                 let songs:Song[] = [];
@@ -69,7 +69,7 @@ export class MusicService {
     }
 
     initSong(song:Song, isPlay?:boolean) {
-        this.http.get(`http://localhost:3000/music/youtubeSong?artist=${song.artist}&track=${song.name}`)
+        this.http.get(`https://popzit-ws.herokuapp.com/music/youtubeSong?artist=${song.artist}&track=${song.name}`)
 
             .map( (response) => {
                 const parsedSongJson = response.json();
@@ -119,7 +119,7 @@ export class MusicService {
     }
 
     searchSong(artist:string, track:string) {
-        return this.http.get(`http://localhost:3000/music/song?artist=${artist}&track=${track}`)
+        return this.http.get(`https://popzit-ws.herokuapp.com/music/song?artist=${artist}&track=${track}`)
             .map( (response) => {
                 const searchSongJson = response.json();
                 console.log(searchSongJson);
@@ -150,7 +150,7 @@ export class MusicService {
         };
         const body = JSON.stringify(playlistBody);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/playlist/savePlaylist', body, {headers: headers})
+        return this.http.post('https://popzit-ws.herokuapp.com/playlist/savePlaylist', body, {headers: headers})
             .map( (response:Response) => {
                 return response.json();
             } )
@@ -179,7 +179,7 @@ export class MusicService {
         };
         const body = JSON.stringify(playlistBody);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/playlist/publishPlaylist', body, {headers: headers})
+        return this.http.post('https://popzit-ws.herokuapp.com/playlist/publishPlaylist', body, {headers: headers})
             .map( (response:Response) => {
                 return response.json();
             } )
@@ -200,7 +200,7 @@ export class MusicService {
 
         const body = JSON.stringify(playlistBody);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/playlist/updateAdminPlaylist', body, {headers: headers})
+        return this.http.post('https://popzit-ws.herokuapp.com/playlist/updateAdminPlaylist', body, {headers: headers})
             .map( (response:Response) => {
                 return response.json();
             } )
@@ -209,7 +209,7 @@ export class MusicService {
     }
 
     getPublicPlaylists() {
-        return this.http.get(`http://localhost:3000/playlist/allAdminPlaylists`)
+        return this.http.get(`https://popzit-ws.herokuapp.com/playlist/allAdminPlaylists`)
             .map( (response) => {
                 const playlistsJson = response.json();
                 let playlists:Playlist[] = [];
@@ -226,7 +226,7 @@ export class MusicService {
     deletePlaylist(playlist:Playlist) {
         const body = JSON.stringify({id: playlist.id});
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/playlist/removeAdminPlaylist', body, {headers: headers})
+        return this.http.post('https://popzit-ws.herokuapp.com/playlist/removeAdminPlaylist', body, {headers: headers})
             .map( (response) => {
                 return response.json();
             })
