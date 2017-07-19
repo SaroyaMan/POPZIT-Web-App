@@ -18,6 +18,7 @@ export class MusicService {
     private currentSongIndex = -1;
 
     reset() {
+        this.playlist = [];
         this.selectedAlbums = [];
         this.selectedSong = null;
         this.currentSongIndex = -1;

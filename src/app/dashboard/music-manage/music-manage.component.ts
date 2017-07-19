@@ -88,7 +88,7 @@ export class MusicManageComponent implements OnInit {
     }
 
     removeSongFromPlaylist(index:number) {
-        this.playlist.splice(index, 1);
+        // this.playlist.splice(index, 1);
         this.musicService.removeSongFromPlaylist(index);
     }
 

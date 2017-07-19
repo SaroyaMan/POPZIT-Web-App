@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {MusicService} from "../../shared/music.service";
 
 @Component({
     selector: 'app-signout',
@@ -10,7 +11,8 @@ import {Router} from "@angular/router";
 export class SignoutComponent implements OnInit {
 
     constructor(private authService:AuthService,
-                private router:Router) {}
+                private router:Router,
+                private musicService:MusicService) {}
 
     ngOnInit() {        //We call directly to logout...
         this.onLogout();
@@ -19,6 +21,7 @@ export class SignoutComponent implements OnInit {
 
     onLogout() {
         this.authService.signout();
+        this.musicService.reset();
         this.router.navigate(['/']);
     }
 }

@@ -43,13 +43,13 @@ export class AuthService {
         return this.http.post('https://popzit-ws.herokuapp.com/user/signin', body, {headers: headers})
             .map( (response:Response) => {
                 const jsonResponse = response.json();
-
                 //Init the signedUser with the rest of fields.
                 this.signedUser = user;
                 this.signedUser.firstName = jsonResponse.user.firstName;
                 this.signedUser.lastName = jsonResponse.user.lastName;
                 this.signedUser.birthdate = jsonResponse.user.birthdate;
                 this.signedUser.gravatarHash = jsonResponse.user.gravatarHash;
+                this.signedUser.isAdmin = jsonResponse.user.isAdmin;
                 return jsonResponse;
             })
             .catch( (error:Response) => Observable.throw(error));

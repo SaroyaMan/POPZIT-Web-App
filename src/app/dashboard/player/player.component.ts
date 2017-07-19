@@ -58,7 +58,10 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
                 }
                 if(this.player.getCurrentTime() === this.player.getDuration()) {
                     clearInterval(this.songDurationInterval);
-                    this.nextSong();
+                    if(this.musicService.getPlaylist().length !== 0) {
+                        this.nextSong();
+
+                    }
                 }
             }, 700);
     }

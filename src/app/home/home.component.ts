@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit{
             this.musicService.initPlaylist()
                 .subscribe( (songs:Song[]) => {
                     this.musicService.setPlaylist(songs);
-
                     if(this.authService.isAdmin() || this.musicService.getPlaylist().length !== 0) {
                         this.mainPath = '/dashboard/music';
                     }
