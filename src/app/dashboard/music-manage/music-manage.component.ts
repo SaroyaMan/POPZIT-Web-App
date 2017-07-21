@@ -7,6 +7,7 @@ import {Params, ActivatedRoute} from "@angular/router";
 import {AlertService} from "../../shared/alert-box/alert.service";
 import {Alert} from "../../shared/alert-box/alert.model";
 import * as $ from 'jquery';
+import {Album} from "../../shared/album.model";
 
 @Component({
     selector: 'app-music-manage',
@@ -15,16 +16,21 @@ import * as $ from 'jquery';
 })
 export class MusicManageComponent implements OnInit {
 
-    form:FormGroup;
-    playlist:Song[];
+    searchSongForm:FormGroup;
+    searchAlbumForm:FormGroup;
+
+    // playlist:Song[];
 
     searchedSong;
+    searchedAlbum;
 
     errMsg = '';
     isAdmin = false;
 
     editMode = false;
     playlistId = '';
+
+    isSearchSong = true;
 
     loader = $('#loaderContent');
 
@@ -35,11 +41,17 @@ export class MusicManageComponent implements OnInit {
 
     ngOnInit() {
 
-        this.form = new FormGroup({
+        this.searchSongForm = new FormGroup({
             artist: new FormControl(null, Validators.required),
             track: new FormControl(null, Validators.required),
         });
-        this.playlist = this.musicService.getPlaylist();
+
+        this.searchAlbumForm = new FormGroup({
+            artist: new FormControl(null, Validators.required),
+            album: new FormControl(null, Validators.required),
+        });
+
+        // this.playlist = this.musicService.getPlaylist();
         this.isAdmin = this.authService.isAdmin();
 
         this.route.params
@@ -55,12 +67,11 @@ export class MusicManageComponent implements OnInit {
         this.musicService.playSongByIndex(index);
     }
 
-    onSubmit() {            ///On Search
+    searchSong() {            ///On Search
         this.loader.fadeIn(300);
         this.searchedSong = this.musicService.searchSong(
-            this.form.value.artist, this.form.value.track)
+            this.searchSongForm.value.artist, this.searchSongForm.value.track)
             .subscribe( (song:Song) => {
-                    console.log(song);
                     if(song === null) {
                         this.errMsg = 'No Results Was Found';
                         this.searchedSong = null;
@@ -76,7 +87,34 @@ export class MusicManageComponent implements OnInit {
                     this.loader.fadeOut(300)
                 }
             );
-        this.form.reset();
+        this.searchSongForm.reset();
+    }
+
+    searchAlbum() {
+        this.loader.fadeIn(300);
+        this.searchedAlbum = this.musicService.searchAlbum(
+            this.searchAlbumForm.value.artist, this.searchAlbumForm.value.album)
+            .subscribe( (album:Album) => {
+                    if(album === null) {
+                        this.errMsg = 'No Results Was Found';
+                        this.searchedSong = null;
+                    }
+                    else {
+                        this.searchedAlbum = album;
+                        this.errMsg = '';
+                    }
+                    this.loader.fadeOut(300)
+                }, (err) => {
+                    this.errMsg = 'No Results Was Found';
+                    this.searchedAlbum = null;
+                    this.loader.fadeOut(300)
+                }
+            );
+        this.searchSongForm.reset();
+    }
+
+    toggleSearch() {
+        this.isSearchSong = !this.isSearchSong;
     }
 
     playSong(song:Song) {

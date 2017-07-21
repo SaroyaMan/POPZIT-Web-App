@@ -1,46 +1,77 @@
 <section id="manageMusic">
     <h1>Your Current Playlist</h1>
     <ul>
-        <li *ngFor="let song of playlist; let i = index">
-            <button (click)="removeSongFromPlaylist(i)"></button>
-            <span (click)="playSongByIndex(i)">
+        <li *ngFor="let song of musicService.getPlaylist(); let i = index">
+            <section>
+                <span [ngStyle]="{visibility: i === musicService.getCurrentSongIndex() ? 'visible': 'hidden'}"></span>
+                <button (click)="removeSongFromPlaylist(i)"></button>
+            </section>
+            <!--<button (click)="removeSongFromPlaylist(i)"></button>-->
+            <span [ngStyle]="{color: i === musicService.getCurrentSongIndex() ? '#ffed00' : 'white'}" (click)="playSongByIndex(i)">
                 {{i+1}}. {{song.artist}} - {{song.name}}
             </span>
-            <span *ngIf="i === this.musicService.getCurrentSongIndex()">(Currently Playing)</span>
         </li>
     </ul>
-    <button type="button" class="formButton" [disabled]="playlist.length === 0"
+    <button type="button" class="formButton" [disabled]="musicService.isPlaylistEmpty()"
             (click)="savePlaylist()">
         SAVE MY LIST
     </button>
 
-    <button *ngIf="!editMode && isAdmin" type="button" class="formButton" [disabled]="playlist.length === 0"
+    <button *ngIf="!editMode && isAdmin" type="button" class="formButton" [disabled]="musicService.isPlaylistEmpty()"
             (click)="publishPlaylist()">
         PUBLISH MY LIST
     </button>
-    <button *ngIf="editMode && isAdmin" type="button" class="formButton" [disabled]="playlist.length === 0"
+    <button *ngIf="editMode && isAdmin" type="button" class="formButton" [disabled]="musicService.isPlaylistEmpty()"
             (click)="editPlaylist()">
         SAVE CHANGES
     </button>
 
 </section>
-<section id="addSong">
-    <form [formGroup]="form" (submit)="onSubmit()">
-        <h1>Search for a song</h1>
+
+<section id="addAlbum" *ngIf="!isSearchSong">
+    <form [formGroup]="searchAlbumForm" (submit)="searchAlbum()">
+        <h1>Search for an album</h1>
+        <button class="switchSearch" type="button" (click)="toggleSearch()">Switch to song search</button>
         <div>
-            <input type="text" name="artist"  placeholder="artist name *" formControlName="artist">
+            <input name="artist"  placeholder="artist name *" formControlName="artist">
         </div>
 
         <div>
-            <input type="text" name="track" placeholder="track name *" formControlName="track">
+            <input name="album" placeholder="album name *" formControlName="album">
         </div>
-        <button type="submit" class="formButton" [disabled]="!form.valid">SEARCH</button>
+        <button type="submit" class="formButton" [disabled]="!searchAlbumForm.valid">SEARCH</button>
     </form>
 
+    <section class="searchResults">
+        <span class="error">{{errMsg}}</span>
+        <section *ngIf="searchedAlbum">
+            <span>Your Result</span>
+            <div class="songButtons" *ngFor="let song of searchedAlbum.songs">
+                <button type="button" (click)="playSong(song)"></button>
+                <button type="button" (click)="addToPlaylist(song)"></button>
+                <p>{{song.artist}} - {{song.name}}</p>
+            </div>
+        </section>
+    </section>
+</section>
 
 
-    <section id="searchResults">
-        <span id="error">{{errMsg}}</span>
+<section id="addSong" *ngIf="isSearchSong">
+    <form [formGroup]="searchSongForm" (submit)="searchSong()">
+        <h1>Search for a song</h1>
+        <button class="switchSearch" type="button" (click)="toggleSearch()">Switch to album search</button>
+        <div>
+            <input name="artist"  placeholder="artist name *" formControlName="artist">
+        </div>
+
+        <div>
+            <input name="track" placeholder="track name *" formControlName="track">
+        </div>
+        <button type="submit" class="formButton" [disabled]="!searchSongForm.valid">SEARCH</button>
+    </form>
+
+    <section class="searchResults">
+        <span class="error">{{errMsg}}</span>
         <section *ngIf="searchedSong">
             <span>Your Result</span>
             <div class="songButtons">

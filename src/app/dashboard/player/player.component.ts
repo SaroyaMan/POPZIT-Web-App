@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {Song} from "../../shared/song.model";
-import {Album} from "../../shared/album.model";
 import * as $ from 'jquery';
 import {MusicService} from "../../shared/music.service";
 
@@ -39,6 +38,7 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
             this.isPlayed = true;
         }
         clearInterval(this.songDurationInterval);
+
         this.currTime = 0;
         this.startInterval();
         $('progress').val(0);
@@ -52,20 +52,27 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
         let progress = $('progress');
         this.songDurationInterval = setInterval(
             () => {
-                if (this.player.getCurrentTime() <= this.player.getDuration()) {
-                    this.currTime = this.player.getCurrentTime();
-                    progress.val(Math.floor(Math.round((this.currTime / this.player.getDuration())*100)));
-                }
-                if(this.player.getCurrentTime() === this.player.getDuration()) {
-                    clearInterval(this.songDurationInterval);
-                    if(this.musicService.getPlaylist().length !== 0) {
-                        this.nextSong();
-
+                if(this.player) {
+                    if (this.player.getCurrentTime() <= this.player.getDuration()) {
+                        this.currTime = this.player.getCurrentTime();
+                        progress.val(Math.floor(Math.round(
+                            (this.currTime / (this.player.getDuration() === 0 ? 1 : this.player.getDuration()
+                            ))*100)));
+                    }
+                    if(this.player.getCurrentTime() === this.player.getDuration() && this.player.getDuration() !== 0) {
+                        if(!this.musicService.isPlaylistEmpty()) {
+                            this.nextSong();
+                        }
+                        /*Happens once, don't worry. clearInterval is not possible
+                          inside setInterval (in Angular)
+                         */
+                        for (let i = 1; i < 99999; i++)
+                            window.clearInterval(i);
                     }
                 }
-            }, 700);
-    }
 
+            }, 1020);
+    }
 
     addToPlaylist() {
         this.musicService.addSongToPlaylist(this.song);

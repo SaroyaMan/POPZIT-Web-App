@@ -7,6 +7,8 @@ import {Album} from "./album.model";
 import {Song} from "./song.model";
 import {AuthService} from "../auth/auth.service";
 import {Playlist} from "./playlist.model";
+import {unescape} from "querystring";
+import {isNullOrUndefined, isUndefined} from "util";
 
 @Injectable()
 export class MusicService {
@@ -75,7 +77,6 @@ export class MusicService {
             .map( (response) => {
                 const parsedSongJson = response.json();
                 song.youtubeId =  parsedSongJson.youtubeId;
-                console.log(song);
                 return song;
             })
             .catch( (error:Response) => Observable.throw(error.json()) )
@@ -117,13 +118,14 @@ export class MusicService {
 
     playSongByIndex(index:number) {
         this.selectedSong = this.playlist[this.currentSongIndex = index];
+
+
     }
 
     searchSong(artist:string, track:string) {
         return this.http.get(`https://popzit-ws.herokuapp.com/music/song?artist=${artist}&track=${track}`)
             .map( (response) => {
                 const searchSongJson = response.json();
-                console.log(searchSongJson);
                 let imgPath = searchSongJson.imagePath === 'unknown' ?
                     '/assets/images/unknown_album.png' : searchSongJson.imagePath;
                 return new Song(track, artist, null, new Album(artist, searchSongJson.album, imgPath))
@@ -134,8 +136,27 @@ export class MusicService {
 
     }
 
+    searchAlbum(artist:string, album:string) {
+        return this.http.get(`https://popzit-ws.herokuapp.com/music/album?artist=${artist}&name=${album}`)
+            .map( (response) => {
+                const searchAlbumJson = response.json();
+                for(let song of searchAlbumJson.songs) {
+                    song.album = searchAlbumJson;
+                }
+                return searchAlbumJson;
+            })
+            .catch( (error:Response) =>
+                Observable.throw(error.json())
+            )
+    }
+
     removeSongFromPlaylist(index:number) {
+        if(this.selectedSong &&
+            this.playlist[index].youtubeId === this.selectedSong.youtubeId) {
+            this.currentSongIndex = -1;
+        }
         this.playlist.splice(index,1);
+
     }
 
     savePlaylist() {
