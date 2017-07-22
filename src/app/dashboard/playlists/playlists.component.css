@@ -1,169 +1,298 @@
-#playlistContainer {
-    float: left;
-    height: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    font-family: "Futura PT", sans-serif;
-    width: 55%;
-    padding-left: 6%;
+@media(min-width: 740px) {
+
+    #playlistContainer {
+        float: left;
+        height: 100%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        font-family: "Futura PT", sans-serif;
+        width: 55%;
+        padding-left: 6%;
+    }
+
+    h1,h4 {
+        color: white;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h1 span {
+        color:#ffed00;
+    }
+
+    h4 {
+        margin-top: 2%;
+        font-weight: lighter;
+    }
+
+
+    .playlistBlock {
+        display: inline-flex;
+        width: 130px;
+        height: 130px;
+        border: 3px solid #ffed00;
+        margin-right: 20px;
+        margin-top: 40px;
+
+        justify-content: center;
+        background-size: cover;
+        transition: filter linear 0.2s;
+
+        line-height: 290px;
+        cursor: pointer;
+        position: relative;
+
+    }
+
+    .playlistBlock span {
+        font-weight: lighter;
+        text-align: center;
+        color: #ffed00;
+    }
+
+    .playlistBlock:hover {
+        filter: brightness(50%);
+        /*background: url('../../assets/images/play.png') no-repeat;*/
+    }
+
+    #adminOptions button {
+        position: absolute;
+        display: block;
+        left: -10px;
+        top: -10px;
+    }
+
+    #deletePlaylistButton {
+        outline: none;
+        border: none;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        background: url('../../../assets/images/x-button.png') no-repeat;
+    }
+
+    #editPlaylistButton {
+        outline: none;
+        border: none;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        margin-left: 20%;
+        background: url('../../../assets/images/edit.png') no-repeat;
+    }
+
+
+    #playlistDisplay {
+        font-family: "Futura PT", sans-serif;
+        float: left;
+        height: 100%;
+        width: 22%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    #playlistDisplay > h4 {
+        margin-top: 13.5%;
+        margin-bottom: 3%;
+    }
+
+    #playlistDisplay > p {
+        color: white;
+        font-size: small;
+    }
+
+    #playlistDisplay p span {
+        text-decoration: underline;
+    }
+
+    .songBlock {
+        color: #ffed00;
+    }
+
+    .songButtons {
+        float: left;
+        width: 70px;
+        margin-top: 15px;
+
+    }
+
+    .songButtons > button {
+        display: inline-block;
+        background: url("../../../assets/images/play_button.png") no-repeat center;
+        width: 32px;
+        height: 32px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .songButtons > button:nth-child(2) {
+        background: url("../../../assets/images/plus_button.png") no-repeat center;
+    }
+
+    .songDetails {
+        float: left;
+        margin-top: 15px;
+    }
+
+    .songDetails p {
+        font-size: smaller;
+        color: #ffed00;
+    }
+
+    .songDetails span {
+        font-size: smaller;
+        opacity: 0.6;
+        position: relative;
+        top: -5px;
+    }
+
+    #assignPlaylist {
+        display: block;
+        outline: none;
+        border: 6px solid #ffed00;
+        background: transparent;
+        width: 200px;
+        height: 50px;
+        margin-top: 2%;
+        position: relative;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    #assignPlaylist:hover {
+        background: #ffed00;
+        color: black;
+    }
 }
 
-h1,h4 {
-    color: white;
-}
-
-h1 {
-    font-size: 24px;
-}
-
-h1 span {
-    color:#ffed00;
-}
-
-h4 {
-    margin-top: 2%;
-    font-weight: lighter;
-}
+@media(max-width: 740px) {
 
 
-.playlistBlock {
-    display: inline-flex;
-    width: 130px;
-    height: 130px;
-    border: 3px solid #ffed00;
-    margin-right: 20px;
-    margin-top: 40px;
+    #playlistContainer h1, #playlistContainer h4 {
+        display: none;
+    }
 
-    justify-content: center;
-    background-size: cover;
-    transition: filter linear 0.2s;
+    #playlistContainer {
+        margin-top: 5%;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 
-    line-height: 290px;
-    cursor: pointer;
-    position: relative;
+    .playlistBlock {
+        display: inline-block;
+        margin-left: 2%;
+        margin-bottom: 2%;
+        width: 30%;
+        height: 90px;
+        border: 1px solid #ffed00;
+        border-radius: 5px;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+        text-align: center;
+        position: relative;
 
-}
+    }
 
-.playlistBlock span {
-    font-weight: lighter;
-    text-align: center;
-    color: #ffed00;
-}
+    .playlistBlock > section:first-child {
+        height: 100%;
+        width: 100%;
+    }
 
-.playlistBlock:hover {
-    filter: brightness(50%);
-    /*background: url('../../assets/images/play.png') no-repeat;*/
-}
+    .playlistBlock span {
+        visibility: hidden;
+    }
 
-#adminOptions button {
-    position: absolute;
-    display: block;
-    left: -10px;
-    top: -10px;
-}
+    #adminOptions button {
+        position: absolute;
+        display: block;
+        outline: none;
+        border: none;
+        width: 24px;
+        height: 24px;
+        left: 0;
+        top: 0;
+    }
 
-#deletePlaylistButton {
-    outline: none;
-    border: none;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    background: url('../../../assets/images/x-button.png') no-repeat;
-}
+    #deletePlaylistButton {
+        background: url('../../../assets/images/x-button.png') no-repeat;
+    }
 
-#editPlaylistButton {
-    outline: none;
-    border: none;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    margin-left: 20%;
-    background: url('../../../assets/images/edit.png') no-repeat;
-}
+    #editPlaylistButton {
+
+        margin-left: 25%;
+        background: url('../../../assets/images/edit.png') no-repeat;
+    }
 
 
-#playlistDisplay {
-    font-family: "Futura PT", sans-serif;
-    float: left;
-    height: 100%;
-    width: 22%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
+    #playlistDisplay {
+        font-family: "Futura PT", sans-serif;
+        display: block;
+        width: 90%;
+        margin: 2% 5% 20% 7%;
 
-#playlistDisplay > h4 {
-    margin-top: 13.5%;
-    margin-bottom: 3%;
-}
+    }
 
-#playlistDisplay > p {
-    color: white;
-    font-size: small;
-}
+    #playlistDisplay > p > span {
+        color: white;
+    }
 
-#playlistDisplay p span {
-    text-decoration: underline;
-}
+    #playlistDisplay h4, p {
+        color: #ffed00
+    }
 
-.songBlock {
-    color: #ffed00;
-}
 
-.songButtons {
-    float: left;
-    width: 70px;
-    margin-top: 15px;
+    .songButtons {
+        float: left;
+        width: 70px;
+    }
 
-}
+    .songButtons > button {
+        display: inline-block;
+        background: url("../../../assets/images/play_button.png") no-repeat center;
+        width: 32px;
+        height: 32px;
+        border: none;
+        outline: none;
+    }
 
-.songButtons > button {
-    display: inline-block;
-    background: url("../../../assets/images/play_button.png") no-repeat center;
-    width: 32px;
-    height: 32px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
+    .songButtons > button:nth-child(2) {
+        background: url("../../../assets/images/plus_button.png") no-repeat center;
+    }
 
-.songButtons > button:nth-child(2) {
-    background: url("../../../assets/images/plus_button.png") no-repeat center;
-}
+    .songDetails p, .songDetails span {
+        color: #ffed00;
+        font-size: 80%;
+    }
 
-.songDetails {
-    float: left;
-    margin-top: 15px;
-}
+    .songDetails p {
+        display: inline;
+        line-height: 32px;
+    }
 
-.songDetails p {
-    font-size: smaller;
-    color: #ffed00;
-}
+    .songDetails p:after {
+        content: ' - ';
+    }
 
-.songDetails span {
-    font-size: smaller;
-    opacity: 0.6;
-    position: relative;
-    top: -5px;
-}
+    #assignPlaylist {
+        font-family: "Futura PT", sans-serif;
+        width: 40%;
+        height: 40px;
+        outline: none;
+        border-radius: 5px;
+        border: 0;
+        background: #ffed00;
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+    }
 
-#assignPlaylist {
-    display: block;
-    outline: none;
-    border: 6px solid #ffed00;
-    background: transparent;
-    width: 200px;
-    height: 50px;
-    margin-top: 2%;
-    position: relative;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.4s ease, color 0.4s ease;
-}
-
-#assignPlaylist:hover {
-    background: #ffed00;
-    color: black;
 }

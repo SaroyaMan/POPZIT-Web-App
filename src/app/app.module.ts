@@ -16,7 +16,6 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { SafePipe } from './safe.pipe';
 import {MomentModule} from "angular2-moment";
 import { DurationPipe } from './duration.pipe';
@@ -65,5 +64,3 @@ import {AlertService} from "./shared/alert-box/alert.service";
     bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-platformBrowserDynamic().bootstrapModule(AppModule);

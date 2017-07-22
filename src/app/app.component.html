@@ -1,15 +1,16 @@
 <div id="wrapper">
-    <header [ngClass]="{'loggedHeader': isLoggedIn()}">
+    <header>
         <a routerLink="/" id="logo"></a>
         <ng-template [ngIf]="authService.signedUser">
             <span>{{authService.signedUser.firstName + ' ' + authService.signedUser.lastName}}</span>
-            <a routerLink="." id="avatar" [ngStyle]="{'background': 'url(https://www.gravatar.com/avatar/' + authService.signedUser.gravatarHash + '?s=40)'}">
+            <a routerLink="." id="avatar"
+               [ngStyle]="{'background': 'url(https://www.gravatar.com/avatar/' + authService.signedUser.gravatarHash + '?s=40)'}">
             </a>
         </ng-template>
         <nav>
             <ul>
-                <li><a routerLink=".">Premium</a></li>
-                <li><a routerLink=".">Help</a></li>
+                <li><a href="#" (click)="false">Premium</a></li>
+                <li><a href="#" (click)="false">Help</a></li>
                 <li *ngIf="isLoggedIn(); else newUser;"><a routerLink="auth/signout" (click)="user=null">Signout</a></li>
                 <ng-template #newUser>
                     <li><a routerLink="auth/signin" routerLinkActive="markNav">Signin</a></li>

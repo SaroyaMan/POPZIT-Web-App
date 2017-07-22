@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {Song} from "../../shared/song.model";
 import * as $ from 'jquery';
 import {MusicService} from "../../shared/music.service";
@@ -9,32 +9,23 @@ import {MusicService} from "../../shared/music.service";
     templateUrl: './player.component.html',
     styleUrls: ['./player.component.css']
 })
-export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
+export class PlayerComponent implements OnChanges, OnDestroy {
 
     @Input() song:Song;
+    player:YT.Player;
+    currTime = 0;
+    isPlayed:boolean;
+    isMuted:boolean;
 
-    private player:YT.Player;
     private ytEvent;
-
-    private playPath = '../../../assets/images/play_music_bar.png';
-    private pausePath = '../../../assets/images/pause_music_bar.png';
-    private soundOnPath = '../../../assets/images/sound_on_music_bar.png';
-    private soundOffPath = '../../../assets/images/sound_off_music_bar.png';
-
-    private currTime = 0;
     private songDurationInterval;
 
     constructor(private musicService:MusicService) {}
 
 
-    ngOnInit() {
-        // this.startInterval();
-    }
-
     ngOnChanges(changes: SimpleChanges): void {
         if(this.player) {
             this.player.loadVideoById(this.song.youtubeId);
-            $('#toggleVideo').css('background-image', `url(${this.pausePath})` );
             this.isPlayed = true;
         }
         clearInterval(this.songDurationInterval);
@@ -90,7 +81,6 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
         this.playVideo();
     }
 
-    isPlayed:boolean;
     playVideo() {
         this.player.playVideo();
         this.isPlayed = true;
@@ -103,25 +93,17 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
 
 
     toggleVideo() {
-        if(this.isPlayed) {
-            this.pauseVideo();
-            $('#toggleVideo').css('background-image', `url(${this.playPath})` );
-        }
-        else {
-            this.playVideo();
-            $('#toggleVideo').css('background-image', `url(${this.pausePath})` );
-        }
+        this.isPlayed ? this.pauseVideo() : this.playVideo();
     }
 
     toggleSound() {
         if(this.player.isMuted()) {
+            this.isMuted = false;
             this.player.unMute();
-            $('#toggleSound').css('background-image', `url(${this.soundOnPath})` );
         }
         else {
+            this.isMuted = true;
             this.player.mute();
-            $('#toggleSound').css('background-image', `url(${this.soundOffPath})` );
-
         }
     }
 

@@ -27,8 +27,8 @@
             <button type="button" (click)="addToPlaylist(song)"></button>
         </div>
         <div class="songDetails">
-            <p>{{song.name}}</p>
-            <span>{{song.artist}}</span>
+            <p>{{song.name | shorten}}</p>
+            <span>{{song.artist | shorten}}</span>
         </div>
         <div class="clear"></div>
     </section>

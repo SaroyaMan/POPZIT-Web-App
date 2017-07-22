@@ -1,107 +1,5 @@
-section {
-    width: 60%;
-    margin: 100px auto;
-    display: table;
-}
-
-.socialMediaIcon{
-    padding-right: 20px;
-    margin-top: 20px;
-    background: url("../../../assets/images/facebook_icon.png") no-repeat;
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    filter: invert(0%);
-    transition: filter 0.4s ease;
-}
-section > a:nth-child(3) {
-    background: url("../../../assets/images/google_icon.png") no-repeat;
-
-}
-
-section > a:nth-child(4) {
-    background: url("../../../assets/images/twitter_icon.png") no-repeat;
-}
-
-.socialMediaIcon:hover {
-    filter: invert(70%);
-}
-
-h4, h5, h6, p {
-    font-family: "Futura PT", sans-serif;
-    color: white;
-}
-
-h4 {
-    margin-top: 10px;
-}
-
-h5 {
-    padding: 15px 0 10px 0;
-}
-
-
-p {
-    padding: 10px 0 15px 0;
-    font-size: small;
-}
-
-
-form{
-    font-family: "Futura PT", sans-serif;
-    width: 60%;
-    margin: -80px auto;
-    display: table;
-}
-
-input {
-    font-family: "Futura PT", sans-serif;
-    border: 1px solid white;
-    outline: none;
-    background: none;
-    width: 360px;
-    height: 40px;
-    margin: 10px 10px 5px 0;
-    color: white;
-    padding-left: 40px;
-    display: inline-block;
-}
-input:focus {
-    border: 1px solid #016bf8;
-}
-
-button[type=submit] {
-    display: block;
-    font-family: "Futura PT", sans-serif;
-    /*background: #ffec00;*/
-    border: 6px solid #ffed00;
-    background: transparent;
-    width: 400px;
-    height: 50px;
-    margin: 15px 10px 5px 0;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.4s ease, color 0.4s ease;
-
-}
-
-button[type=submit]:hover {
-    background: #ffed00;
-    color: black;
-}
-
-::-webkit-input-placeholder {
-    color: white;
-    font-size: small;
-}
-
-/* Change the white to any color ;) */
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #242D3E inset;
-    -webkit-text-fill-color: white !important;
-}
+.greenColor {color: #0df800}
+.redColor {color: red}
 
 input.ng-touched.ng-invalid {
     border: 1px solid red;
@@ -111,23 +9,174 @@ input.ng-touched.ng-valid {
     border: 1px solid #0df800;
 }
 
-button[disabled] {
-    background: grey;
-    border: 6px solid gray;
-    cursor: not-allowed;
+@media(min-width: 740px) {
+
+    section {
+        width: 60%;
+        margin: 100px auto;
+        display: table;
+    }
+
+    .socialMediaIcon{
+        padding-right: 20px;
+        margin-top: 20px;
+        background: url("../../../assets/images/facebook_icon.png") no-repeat;
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        filter: invert(0%);
+        transition: filter 0.4s ease;
+    }
+    section > a:nth-child(3) {
+        background: url("../../../assets/images/google_icon.png") no-repeat;
+
+    }
+
+    section > a:nth-child(4) {
+        background: url("../../../assets/images/twitter_icon.png") no-repeat;
+    }
+
+    .socialMediaIcon:hover {
+        filter: invert(70%);
+    }
+
+    h4, h5, h6, p {
+        font-family: "Futura PT", sans-serif;
+        color: white;
+    }
+
+    h4 {
+        margin-top: 10px;
+    }
+
+    h5 {
+        padding: 15px 0 10px 0;
+    }
+
+
+    p {
+        padding: 10px 0 15px 0;
+        font-size: small;
+    }
+
+
+    form{
+        font-family: "Futura PT", sans-serif;
+        width: 60%;
+        margin: -80px auto;
+        display: table;
+    }
+
+    input {
+        font-family: "Futura PT", sans-serif;
+        border: 1px solid white;
+        outline: none;
+        background: none;
+        width: 360px;
+        height: 40px;
+        margin: 10px 10px 5px 0;
+        color: white;
+        padding-left: 40px;
+        display: inline-block;
+    }
+    input:focus {
+        border: 1px solid #016bf8;
+    }
+
+    button[type=submit] {
+        display: block;
+        font-family: "Futura PT", sans-serif;
+        border: 6px solid #ffed00;
+        background: transparent;
+        width: 400px;
+        height: 50px;
+        margin: 15px 10px 5px 0;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.4s ease, color 0.4s ease;
+
+    }
+
+    button[type=submit]:hover {
+        background: #ffed00;
+        color: black;
+    }
+
+    ::-webkit-input-placeholder {
+        color: white;
+        font-size: small;
+    }
+
+    /* Change the white to any color :) */
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px #242D3E inset;
+        -webkit-text-fill-color: white !important;
+    }
+
+
+    button[disabled] {
+        background: grey;
+        border: 6px solid gray;
+        cursor: not-allowed;
+    }
+
+    button[disabled]:hover {
+        background: grey;
+        color: white;
+    }
+
+    span {
+        font-size: x-large;
+        margin-left: 5px;
+        text-align: center;
+        vertical-align: -25%;
+    }
+
 }
 
-button[disabled]:hover {
-    background: grey;
-    color: white;
-}
+@media(max-width: 740px) {
 
-span {
-    font-size: x-large;
-    margin-left: 5px;
-    text-align: center;
-    vertical-align: -25%;
-}
+    .socialMediaIcon, section > h4:first-child, p,     .greenColor, .redColor
+    {
+        display: none;
+    }
 
-.greenColor {color: #0df800}
-.redColor {color: red}
+    h4 {
+        font-size: x-large;
+        text-align: center;
+        color: white;
+    }
+
+    input {
+        font-family: "Futura PT", sans-serif;
+        width: 80%;
+        height: 30px;
+        padding-left: 3%;
+        margin: 20px 8%;
+        border: 1px solid #005fa4;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    button {
+        font-family: "Futura PT", sans-serif;
+        width: 83%;
+        height: 40px;
+        margin: 20px 8% 20px;
+        outline: none;
+        border-radius: 5px;
+
+        border: 0;
+        background: #ffed00;
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 1.5s ease;
+    }
+
+    button[disabled] {
+        background: grey;
+    }
+}

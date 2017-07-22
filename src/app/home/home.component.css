@@ -1,73 +1,135 @@
-main {
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-    text-align: center;
+@media(min-width: 740px) {
+
+    main {
+        margin: auto;
+        width: 80%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #mainLogo > a {
+        background: url("../../assets/images/main_logo.png") no-repeat;
+        height: 80px;
+        width: 140px;
+        display: block;
+        margin: 3% auto;
+        font-size: 64px;
+        font-weight: bolder;
+        padding-top: 85px;
+        padding-left: 50px;
+    }
+
+    #mainLogo > p {
+        font-family: "LucidaGrande", sans-serif;
+        font-size: 18px;
+        color: #ffed00;
+        letter-spacing: 0.2px;
+        margin-top: -3%;
+        margin-left: 5%;
+    }
+
+    #buttons > p {
+        margin-top: 5%;
+        color: white;
+        font-family: "Futura PT Book", sans-serif;
+        font-size: 35px;
+        letter-spacing: 0.4px;
+    }
+
+    #buttons > a {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 16px;
+        /*color: black;*/
+        margin-top: 3%;
+        /*background:#f8e81c;*/
+        border: 6px solid #ffed00;
+        color: white;
+        width:260px;
+        height:60px;
+        line-height: 60px;
+        vertical-align: middle;
+        font-family: "Futura PT", sans-serif;
+        font-weight: bolder;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    #buttons > a:hover {
+        background: #ffed00;
+        color: black;
+    }
+
+    #learnMore > p {
+        font-family: "Futura PT Book", sans-serif;
+        letter-spacing: 0.30px;
+        color: white;
+        margin-top: 10%;
+    }
+
+    #learnMore a {
+        background: url("../../assets/images/down_arrow.png") no-repeat;
+        display: block;
+        height: 45px;
+        width: 54px;
+        margin: 1% auto;
+    }
 }
 
-#mainLogo > a {
-    background: url("../../assets/images/main_logo.png") no-repeat;
-    height: 80px;
-    width: 140px;
-    display: block;
-    margin: 3% auto;
-    font-size: 64px;
-    font-weight: bolder;
-    padding-top: 85px;
-    padding-left: 50px;
-}
 
-#mainLogo > p {
-    font-family: "LucidaGrande", sans-serif;
-    font-size: 18px;
-    color: #ffed00;
-    letter-spacing: 0.2px;
-    margin-top: -3%;
-    margin-left: 5%;
-}
+@media(max-width: 740px) {
 
-#buttons > p {
-    margin-top: 5%;
-    color: white;
-    font-family: "Futura PT Book", sans-serif;
-    font-size: 35px;
-    letter-spacing: 0.4px;
-}
+    main {
+        margin: auto;
+        width: 80%;
+        padding: 10px;
+        text-align: center;
+    }
 
-#buttons > a {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 16px;
-    /*color: black;*/
-    margin-top: 3%;
-    /*background:#f8e81c;*/
-    border: 6px solid #ffed00;
-    color: white;
-    width:260px;
-    height:60px;
-    line-height: 60px;
-    vertical-align: middle;
-    font-family: "Futura PT", sans-serif;
-    font-weight: bolder;
-    transition: background 0.4s ease, color 0.4s ease;
-}
+    #mainLogo > a {
+        background: url("../../assets/images/main_logo.png") no-repeat;
+        height: 80px;
+        width: 140px;
+        display: block;
+        margin: 3% auto;
+        font-size: 15vw;
+        font-weight: bolder;
+        padding-top: 85px;
+        padding-left: 50px;
+    }
 
-#buttons > a:hover {
-    background: #ffed00;
-    color: black;
-}
+    #mainLogo > p {
+        font-family: "Arial", sans-serif;
+        font-size: 5vw;
+        color: #ffed00;
+        letter-spacing: 0.2px;
+        margin-top: -3%;
+        margin-left: 5%;
+    }
 
-#learnMore > p {
-    font-family: "Futura PT Book", sans-serif;
-    letter-spacing: 0.30px;
-    color: white;
-    margin-top: 10%;
-}
+    #buttons > p {
+        margin-top: 5%;
+        color: white;
+        font-family: "Futura PT Book", sans-serif;
+        font-size: 8.5vw;
+        letter-spacing: 0.4px;
+    }
 
-#learnMore a {
-    background: url("../../assets/images/down_arrow.png") no-repeat;
-    display: block;
-    height: 45px;
-    width: 54px;
-    margin: 1% auto;
+    #buttons > a {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 4.5vw;
+        margin-top: 3%;
+        border: 6px solid #ffed00;
+        color: white;
+        width: 95%;
+        height: 60px;
+        line-height: 60px;
+        vertical-align: middle;
+        font-family: "Futura PT", sans-serif;
+        font-weight: bolder;
+    }
+
+    #learnMore {
+        display: none;
+    }
 }

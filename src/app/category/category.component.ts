@@ -27,8 +27,12 @@ export class CategoryComponent implements OnInit, OnDestroy {
         if(!this.authService.isLoggedIn()) {
             this.router.navigate(['']);
         }
+        $('#loaderContent').fadeIn(300);
         this.musicService.getSubgenres()
-            .subscribe( (categories:Subgenre[]) => this.categories = categories);
+            .subscribe( (categories:Subgenre[]) => {
+                this.categories = categories;
+                $('#loaderContent').fadeOut(300);
+            });
 
     }
 

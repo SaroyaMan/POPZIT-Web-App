@@ -6,9 +6,8 @@
                 <span [ngStyle]="{visibility: i === musicService.getCurrentSongIndex() ? 'visible': 'hidden'}"></span>
                 <button (click)="removeSongFromPlaylist(i)"></button>
             </section>
-            <!--<button (click)="removeSongFromPlaylist(i)"></button>-->
             <span [ngStyle]="{color: i === musicService.getCurrentSongIndex() ? '#ffed00' : 'white'}" (click)="playSongByIndex(i)">
-                {{i+1}}. {{song.artist}} - {{song.name}}
+                {{i+1}}. {{song.artist}} - {{song.name | shorten}}
             </span>
         </li>
     </ul>
@@ -49,7 +48,7 @@
             <div class="songButtons" *ngFor="let song of searchedAlbum.songs">
                 <button type="button" (click)="playSong(song)"></button>
                 <button type="button" (click)="addToPlaylist(song)"></button>
-                <p>{{song.artist}} - {{song.name}}</p>
+                <p>{{song.artist}} - {{song.name | shorten}}</p>
             </div>
         </section>
     </section>

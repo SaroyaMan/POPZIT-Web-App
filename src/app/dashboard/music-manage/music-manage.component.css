@@ -1,187 +1,325 @@
-#manageMusic, #addSong, #addAlbum {
-    float: left;
-    height: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    font-family: "Futura PT", sans-serif;
-}
+@media(min-width: 740px) {
 
-#manageMusic {
-    width: 45%;
-    padding-left: 6%;
-}
+    #manageMusic, #addSong, #addAlbum {
+        float: left;
+        height: 100%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        font-family: "Futura PT", sans-serif;
+    }
 
-ul {list-style-type: none;}
+    #manageMusic {
+        width: 45%;
+        padding-left: 6%;
+    }
 
-h1,h4, ul > li {
-    color: white;
-}
+    ul {list-style-type: none;}
 
-h1 {
-    font-size: 24px;
-    color:#ffed00;
-    margin-bottom: 3%;
-}
+    h1,h4, ul > li {
+        color: white;
+    }
 
-h4 {
-    margin-top: 2%;
-    font-weight: lighter;
-}
+    h1 {
+        font-size: 24px;
+        color:#ffed00;
+        margin-bottom: 3%;
+    }
 
-/*li > span:first-child {*/
+    h4 {
+        margin-top: 2%;
+        font-weight: lighter;
+    }
+
+    /*li > span:first-child {*/
     /*display: inline-block;*/
     /*background: url("../../../assets/images/headphones.png") no-repeat;*/
     /*width: 16px;*/
     /*height: 16px;*/
     /*position: absolute;*/
     /*left: 330px;*/
-/*}*/
+    /*}*/
 
-li > span {
-    cursor: pointer;
-    left: -30px;
-    position: relative;
-    transition: 250ms ease-in color;
+    li > span {
+        cursor: pointer;
+        left: -30px;
+        position: relative;
+        transition: 250ms ease-in color;
+    }
+
+    li > span:hover {
+        /*text-decoration: underline;*/
+        color: #ffed00 !important;
+    }
+
+    li section {
+        display: inline-block;
+        /*left: -30px;*/
+        /*position: relative;*/
+    }
+
+    li section span {
+        display: inline-block;
+        background: url("../../../assets/images/headphones.png") no-repeat;
+        width: 16px;
+        height: 16px;
+        position: relative;
+        left: -30px;
+    }
+
+    li section button {
+        display: inline-block;
+        background: url("../../../assets/images/remove_button.png") no-repeat;
+        width: 16px;
+        height: 16px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: background, 0.3s;
+        left: -30px;
+        position: relative;
+    }
+
+    li section button:hover {
+        background: url("../../../assets/images/remove_button_hover.png") no-repeat;
+    }
+
+    .switchSearch {
+        display: block;
+        outline: none;
+        border-radius: 5px;
+        width: 202px;
+        height: 25px;
+        color: white;
+        background: #656788;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .formButton {
+        display: block;
+        outline: none;
+        border: 6px solid #ffed00;
+        background: transparent;
+        width: 202px;
+        height: 50px;
+        margin-top: 2%;
+        position: relative;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    .formButton:hover {
+        background: #ffed00;
+        color: black;
+    }
+
+
+    #addSong {
+        width: 30%;
+    }
+
+    #addAlbum {
+        width: 30%;
+    }
+
+    form button {
+    }
+
+    button[disabled].formButton {
+        background: grey;
+        border: 6px solid gray;
+        cursor: not-allowed;
+    }
+
+    button[disabled].formButton:hover {
+        background: grey;
+        color: white;
+    }
+
+    input {
+        font-family: "Futura PT", sans-serif;
+        border: 1px solid white;
+        outline: none;
+        background: none;
+        width: 160px;
+        height: 40px;
+        margin: 10px 10px 5px 0;
+        color: white;
+        padding-left: 40px;
+        display: inline-block;
+    }
+    input:focus {
+        border: 1px solid #016bf8;
+    }
+
+    .error, .searchResults section span {
+        display: block;
+        margin-top: 5px;
+        font-weight: bold;
+        color: lightcoral;
+    }
+
+    .searchResults {color: #ffed00}
+
+    .searchResults button {
+        display: inline-block;
+        background: url("../../../assets/images/play_button.png") no-repeat center;
+        width: 32px;
+        height: 32px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .searchResults button:nth-child(2) {
+        background: url("../../../assets/images/plus_button.png") no-repeat center;
+    }
+
+    .searchResults section span {
+        color: white;
+    }
+
+    .searchResults p {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 1%;
+    }
 }
 
-li > span:hover {
-    /*text-decoration: underline;*/
-    color: #ffed00 !important;
-}
+@media(max-width: 740px) {
 
-li section {
-    display: inline-block;
-    /*left: -30px;*/
-    /*position: relative;*/
-}
+    #manageMusic, #addSong, #addAlbum {
+        font-family: "Futura PT", sans-serif;
+    }
 
-li section span {
-    display: inline-block;
-    background: url("../../../assets/images/headphones.png") no-repeat;
-    width: 16px;
-    height: 16px;
-    position: relative;
-    left: -30px;
-}
+    #manageMusic h1, #addAlbum h1, #addSong h1 {
+        color: #ffed00;
+        text-align: center;
+    }
 
-li section button {
-    display: inline-block;
-    background: url("../../../assets/images/remove_button.png") no-repeat;
-    width: 16px;
-    height: 16px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: background, 0.3s;
-    left: -30px;
-    position: relative;
-}
-
-li section button:hover {
-    background: url("../../../assets/images/remove_button_hover.png") no-repeat;
-}
-
-.switchSearch {
-    display: block;
-    outline: none;
-    border-radius: 5px;
-    width: 202px;
-    height: 25px;
-    color: white;
-    background: #656788;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.formButton {
-    display: block;
-    outline: none;
-    border: 6px solid #ffed00;
-    background: transparent;
-    width: 202px;
-    height: 50px;
-    margin-top: 2%;
-    position: relative;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.4s ease, color 0.4s ease;
-}
-
-.formButton:hover {
-    background: #ffed00;
-    color: black;
-}
+    ul {list-style-type: none;}
 
 
-#addSong {
-    width: 30%;
-}
+    li section {
+        display: inline-block;
+        margin-left: 2%;
+    }
 
-#addAlbum {
-    width: 30%;
-}
+    li span {
+        font-size: 4.3vw;
+    }
 
-form button {
-}
+    li section span {
+        display: inline-block;
+        background: url("../../../assets/images/headphones.png") no-repeat;
+        width: 16px;
+        height: 16px;
+    }
 
-button[disabled].formButton {
-    background: grey;
-    border: 6px solid gray;
-    cursor: not-allowed;
-}
+    li section button {
+        display: inline-block;
+        background: url("../../../assets/images/remove_button.png") no-repeat;
+        width: 16px;
+        height: 16px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        position: relative;
+    }
 
-button[disabled].formButton:hover {
-    background: grey;
-    color: white;
-}
+    .formButton {
+        font-family: "Futura PT", sans-serif;
+        width: 40%;
+        height: 40px;
+        margin-top: 2%;
+        margin-left: 8%;
+        margin-bottom: 5%;
+        outline: none;
+        border-radius: 5px;
+        border: 0;
+        background: #ffed00;
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 1.5s ease;
+    }
 
-input {
-    font-family: "Futura PT", sans-serif;
-    border: 1px solid white;
-    outline: none;
-    background: none;
-    width: 160px;
-    height: 40px;
-    margin: 10px 10px 5px 0;
-    color: white;
-    padding-left: 40px;
-    display: inline-block;
-}
-input:focus {
-    border: 1px solid #016bf8;
-}
+    #manageMusic > .formButton:nth-child(4) {
+        margin-left: 3%;
+    }
 
-.error, .searchResults section span {
-    display: block;
-    margin-top: 5px;
-    font-weight: bold;
-    color: lightcoral;
-}
+    input {
+        font-family: "Futura PT", sans-serif;
+        width: 80%;
+        height: 30px;
+        padding-left: 3%;
+        margin: 7px 8%;
+        border: 1px solid #005fa4;
+        border-radius: 5px;
+        outline: none;
+    }
 
-.searchResults {color: #ffed00}
+    .switchSearch {
+        width: 50% !important;
+        margin-left: 25%;
+        margin-right: 25%;
 
-.searchResults button {
-    display: inline-block;
-    background: url("../../../assets/images/play_button.png") no-repeat center;
-    width: 32px;
-    height: 32px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
+        outline: none;
+        border-radius: 5px;
+        height: 25px;
+        color: white;
+        background: #656788;
+        font-size: 4vw;
+        font-weight: bold;
+    }
 
-.searchResults button:nth-child(2) {
-    background: url("../../../assets/images/plus_button.png") no-repeat center;
-}
+    form .formButton {
+        width: 83%;
+    }
 
-.searchResults section span {
-    color: white;
-}
+    button[disabled] {
+        background: grey;
+    }
 
-.searchResults p {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 1%;
+    .searchResults {
+        margin-left: 8%;
+    }
+
+
+    .error, .searchResults section span {
+        display: block;
+        font-weight: bold;
+        color: lightcoral;
+    }
+
+    .searchResults > section > span {color: #ffed00}
+
+    .songButtons > button {
+        display: inline-block;
+        background: url("../../../assets/images/play_button.png") no-repeat center;
+        width: 32px;
+        height: 32px;
+        border: none;
+        outline: none;
+    }
+
+    .songButtons > button:nth-child(2) {
+        background: url("../../../assets/images/plus_button.png") no-repeat center;
+    }
+
+    .searchResults p {
+        display: inline;
+        font-size: 3.4vw;
+        color: #ffed00;
+        vertical-align: top;
+        line-height: 32px;
+    }
+
+    #addAlbum, #addSong {
+        margin-bottom: 20%;
+    }
+
 }

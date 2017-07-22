@@ -43,29 +43,6 @@ body {
     background-size: cover;
 }
 
-.categoryBackground {
-    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
-    url("assets/images/bruno_mars_background.png") no-repeat 95% center fixed;
-    opacity: 0.9;
-    background-blend-mode: screen;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 30%;
-}
-
-.dashboardBackground {
-    background: black;
-    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
-    url("assets/images/dashboard_background.png") no-repeat center right fixed;
-    background-blend-mode: screen;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 83%;
-}
-
 .clear {
     clear: both;
 }
@@ -111,4 +88,49 @@ a {
     bottom: 0;
     left: 0;
     opacity: 0.5;
+}
+
+@media(min-width: 740px) {
+
+    .categoryBackground {
+        background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+        url("assets/images/bruno_mars_background.png") no-repeat 95% center fixed;
+        opacity: 0.9;
+        background-blend-mode: screen;
+
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 30%;
+    }
+
+    .dashboardBackground {
+        background: black;
+        background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+        url("assets/images/dashboard_background.png") no-repeat center right fixed;
+        background-blend-mode: screen;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 83%;
+    }
+
+}
+
+@media(max-width: 740px) {
+    #loader {
+        width: 60px;
+        height: 60px;
+    }
+
+    .categoryBackground, .dashboardBackground {
+        background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+        url("assets/images/dashboard_background.png") no-repeat center center fixed;
+        opacity: 0.9;
+        background-blend-mode: screen;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 }

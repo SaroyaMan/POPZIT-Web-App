@@ -1,44 +1,99 @@
-aside {
-    float: left;
-    height: 100vh;
-    width: 17%;
+@media(min-width: 740px) {
+
+    aside {
+        float: left;
+        height: 100vh;
+        width: 17%;
+    }
+
+    aside ul {
+        margin-top: 30%;
+        margin-left: 30%;
+    }
+
+    aside li {
+        margin-top: 27px;
+    }
+
+    aside a {
+        font-size: 18px;
+        font-family: "Futura PT", sans-serif;
+        color:#ffed00;
+        transition: color 0.4s ease;
+    }
+
+    aside a:hover {
+        color: white;
+    }
+
+    .bold {
+        /*font-family: "Futura PT Heavy", sans-serif;*/
+        font-weight: bold;
+    }
+
+    ul a.bold:nth-child(3) {
+        margin-bottom: 15px;
+    }
+
+    .seperator {
+        width: 110px;
+        border-top:1px solid #979797;
+        padding-top: 35px !important;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
 }
 
-aside ul {
-    margin-top: 30%;
-    margin-left: 30%;
-}
+@media(max-width: 740px) {
 
-aside li {
-    margin-top: 27px;
-}
+    aside ul > li:nth-child(4), aside ul > li:nth-child(5) {
+        display: none;
+    }
 
-aside a {
-    font-size: 18px;
-    font-family: "Futura PT", sans-serif;
-    color:#ffed00;
-    transition: color 0.4s ease;
-}
 
-aside a:hover {
-    color: white;
-}
+    aside {
+        width: 100%;
+        background: #191919;
+        height: 50px;
+    }
 
-.bold {
-    /*font-family: "Futura PT Heavy", sans-serif;*/
-    font-weight: bold;
-}
+    aside ul {
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
 
-ul a.bold:nth-child(3) {
-    margin-bottom: 15px;
-}
+    aside li {
+        display: inline-block;
+        width: 33.3%;
+        float: left;
+        text-align: center;
 
-.seperator {
-    width: 110px;
-    border-top:1px solid #979797;
-    padding-top: 35px !important;
-}
+    }
 
-.underline {
-    text-decoration: underline;
+    aside a {
+        font-family: "Futura PT", sans-serif;
+        background: url("../../assets/images/playlist_icon.png") 50% no-repeat;
+        background-position-y: 50%;
+        display: inline-block;
+        width: 70%;
+        height: 40px;
+        font-size: smaller;
+        line-height: 70px;
+        opacity: 0.4
+    }
+
+    aside li:first-child a {
+        background: url("../../assets/images/radio_icon.png") 50% no-repeat;
+    }
+
+    aside li:nth-child(2) a {
+        background: url("../../assets/images/music_icon.png") 50% no-repeat;
+    }
+
+    .underline {
+        opacity: 1 !important;
+    }
 }

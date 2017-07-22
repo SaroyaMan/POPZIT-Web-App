@@ -27,9 +27,11 @@ export class PlaylistsComponent implements OnInit {
                 private alertService:AlertService) { }
 
     ngOnInit() {
+        $("#loaderContent").fadeIn(300);
         this.musicService.getPublicPlaylists()
             .subscribe( (playlists:Playlist[]) => {
                 this.playlists = playlists;
+                $("#loaderContent").fadeOut(300);
             });
         this.userId = localStorage.getItem('userId');
     }

@@ -2,7 +2,7 @@
     <button id="addButton" (click)="addToPlaylist()"></button>
     <img id="albumPicture" src="{{song.album.imagePath}}" alt="{{song.album.name}}">
     <section id="songDetails">
-        <p>{{song.name}}</p>
+        <p>{{song.name | shorten}}</p>
         <span>{{song.artist}}</span>
     </section>
 
@@ -19,7 +19,10 @@
     </section>
 
     <button id="leftSong" type="button" (click)="prevSong()"></button>
-    <button id="toggleVideo" type="button" (click)="toggleVideo()"></button>
+    <button id="toggleVideo" type="button" (click)="toggleVideo()"
+            [ngClass]="{'pause': !isPlayed}"></button>
     <button id="rightSong" type="button" (click)="nextSong()"></button>
-    <button id="toggleSound" type="button" (click)="toggleSound()"></button>
+    <button id="toggleSound" type="button" (click)="toggleSound()"
+            [ngClass]="{'mute': isMuted}"></button>
+
 </section>

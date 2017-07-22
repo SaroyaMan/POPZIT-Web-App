@@ -2,88 +2,172 @@
     margin: 0 auto;
 }
 
-header {
-    /*margin-top: 4%;*/
-    /*margin-top: 55px*/
-    /*position: relative;*/
-    /*top: 55px;*/
+@media(min-width: 740px) {
+    header {
+        background: #ffed00;
+        height: 55px;
+        margin: 0;
+    }
 
-    background: #ffed00;
-    height: 55px;
-    margin: 0;
+    #logo {
+        background: url("../assets/images/black_logo.png") no-repeat;
+        display: block;
+        width: 23px;
+        height: 53px;
+        margin-left: 100px;
+        float: left;
+        /*margin-top: -20px;*/
 
+        transition: filter 0.4s ease;
+
+    }
+
+    #logo:hover {
+        filter: invert(1);
+    }
+
+    nav {
+        float: right;
+        margin-top: 1%;
+        margin-right: 65px;
+
+    }
+
+    nav > ul {
+        list-style-type: none;
+    }
+
+    nav > ul > li {
+        display: inline-block;
+        margin-right: 62px;
+    }
+
+    li > a {
+        /*color: white;*/
+        color: black;
+        font-weight: bolder;
+        transition: color 0.4s ease;
+    }
+
+    li > a:hover {
+        /*color: darkgray;*/
+        color: whitesmoke;
+    }
+
+
+    .markNav {
+        text-decoration: underline;
+    }
+
+    #avatar {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        border-radius: 100px;
+        margin-top: 5px;
+        background-repeat: no-repeat;
+    }
+
+    span {
+        font-family: "Futura PT", sans-serif;
+        margin-right: 1%;
+        margin-left: 225px;
+        vertical-align: top;
+        line-height: 55px;
+    }
 }
 
-.loggedHeader {
-    background: #ffed00;
-    height: 55px;
-    margin: 0;
-}
 
-#logo {
-    background: url("../assets/images/black_logo.png") no-repeat;
-    display: block;
-    width: 23px;
-    height: 53px;
-    margin-left: 100px;
-    float: left;
-    /*margin-top: -20px;*/
+@media(max-width: 740px) {
 
-    transition: filter 0.4s ease;
+    span {
+        display: none;
+    }
 
-}
+    header {
+        background: #ffed00;
+        height: 60px;
+    }
 
-#logo:hover {
-    filter: invert(1);
-}
+    #logo {
+        background: url("../assets/images/black_logo.png") no-repeat;
+        display: inline-block;
+        width: 30px;
+        height: 53px;
+        margin-left: 2%;
+        margin-top: 1%;
+        float: left;
+    }
 
-nav {
-    float: right;
-    margin-top: 1%;
-    margin-right: 65px;
+    nav {
+        height: 60px;
+        /*float: right;*/
+        /*margin-right: 10%;*/
+    }
 
-}
+    nav > ul {
+        list-style-type: none;
+        width: 100%;
+    }
 
-nav > ul {
-    list-style-type: none;
-}
+    nav > ul > li {
+        display: inline-block;
+        margin-top: 8px;
 
-nav > ul > li {
-    display: inline-block;
-    margin-right: 62px;
-}
+        text-align: center;
+        line-height: 60px;
+        height: 60px;
+        width: 20%;
+    }
 
-nav > ul > li > a {
-    /*color: white;*/
-    color: black;
-    font-weight: bolder;
-    transition: color 0.4s ease;
-}
+    li > a {
+        display: inline-block;
+        background: url("../assets/images/premium.png") no-repeat;
+        width: 30px;
+        height: 30px;
+        padding-top: 3px;
+        font-size: 10px;
+        color: black;
+        filter: opacity(0.5);
 
-nav > ul > li > a:hover {
-    /*color: darkgray;*/
-    color: whitesmoke;
-}
+    }
 
+    ul li:nth-child(2) > a {
+        background: url("../assets/images/help.png") no-repeat !important;
+    }
 
+    ul li:nth-child(3) > a {
+        background: url("../assets/images/signin.png") no-repeat !important;
+    }
 
-.markNav {
-    text-decoration: underline;
-}
+    ul li:nth-child(4) > a {
+        background: url("../assets/images/signup.png") no-repeat !important;
+    }
 
-#avatar {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    border-radius: 100px;
-    margin-top: 5px;
-    background-repeat: no-repeat;
-}
+    .markNav {
+        text-decoration: underline;
+        filter: opacity(1) !important;
+    }
 
-span {
-    font-family: "Futura PT", sans-serif;
-    margin-right: 1%;
-    margin-left: 225px;
-    vertical-align: top;
-    line-height: 55px;
+    #avatar {
+        display: inline-block;
+        float: left;
+        height: 40px;
+        width: 40px;
+        margin-left: 2%;
+        border-radius: 100px;
+        margin-top: 8px;
+        background-repeat: no-repeat;
+    }
+
+    /*span {*/
+        /*position: absolute;*/
+        /*font-family: "Futura PT", sans-serif;*/
+        /*float: left;*/
+        /*margin-right: 1%;*/
+        /*font-size: 10px;*/
+        /*vertical-align: bottom;*/
+        /*line-height: 80px;*/
+    /*}*/
+
 }
