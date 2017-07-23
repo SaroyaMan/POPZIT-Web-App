@@ -202,6 +202,9 @@
 
     ul {list-style-type: none;}
 
+    li {
+        margin-top: 8px;
+    }
 
     li section {
         display: inline-block;
@@ -242,7 +245,7 @@
         border: 0;
         background: #ffed00;
         color: black;
-        font-size: 16px;
+        font-size: 4vw;
         font-weight: bold;
         transition: background 1.5s ease;
     }
@@ -269,7 +272,7 @@
 
         outline: none;
         border-radius: 5px;
-        height: 25px;
+        height: 10%;
         color: white;
         background: #656788;
         font-size: 4vw;
@@ -319,7 +322,7 @@
     }
 
     #addAlbum, #addSong {
-        margin-bottom: 20%;
+        margin-bottom: 27%;
     }
 
 }

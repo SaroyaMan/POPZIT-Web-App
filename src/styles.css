@@ -18,30 +18,14 @@
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("assets/images/home_background.png") no-repeat center center fixed;
-    /*background: rgba(126,0,18, 0.9);*/
-    /*background: url("../images/home_background.png") no-repeat;*/
-
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
-    /*font-family: , serif;*/
     font-family: Futura PT Heavy, sans-serif;
 }
 
-.loginBackground {
-    /*font-family: "Futura PT", sans-serif;*/
-    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
-    url("assets/images/login_background.png") no-repeat center center fixed;
-    opacity: 0.9;
-    background-blend-mode: screen;
 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
 .clear {
     clear: both;
@@ -92,6 +76,19 @@ a {
 
 @media(min-width: 740px) {
 
+    .loginBackground {
+        /*font-family: "Futura PT", sans-serif;*/
+        background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+        url("assets/images/login_background.png") no-repeat center center fixed;
+        opacity: 0.9;
+        background-blend-mode: screen;
+
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
     .categoryBackground {
         background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
         url("assets/images/bruno_mars_background.png") no-repeat 95% center fixed;
@@ -118,16 +115,28 @@ a {
 }
 
 @media(max-width: 740px) {
+
+    html {
+        min-height: 100%;
+    }
+
     #loader {
         width: 60px;
         height: 60px;
     }
 
-    .categoryBackground, .dashboardBackground {
-        background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
-        url("assets/images/dashboard_background.png") no-repeat center center fixed;
+    .loginBackground {
+        background: url("assets/images/login_background.png") no-repeat center center fixed;
         opacity: 0.9;
-        background-blend-mode: screen;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .categoryBackground, .dashboardBackground {
+        background: url("assets/images/dashboard_background.png") no-repeat center center fixed;
+        opacity: 0.9;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

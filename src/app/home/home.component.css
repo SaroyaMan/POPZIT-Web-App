@@ -88,10 +88,10 @@
     #mainLogo > a {
         background: url("../../assets/images/main_logo.png") no-repeat;
         height: 80px;
-        width: 140px;
+        width: 160px;
         display: block;
-        margin: 3% auto;
-        font-size: 15vw;
+        margin: 2% auto;
+        font-size: 60px;
         font-weight: bolder;
         padding-top: 85px;
         padding-left: 50px;
@@ -102,7 +102,6 @@
         font-size: 5vw;
         color: #ffed00;
         letter-spacing: 0.2px;
-        margin-top: -3%;
         margin-left: 5%;
     }
 

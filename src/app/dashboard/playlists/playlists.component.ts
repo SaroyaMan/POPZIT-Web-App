@@ -39,6 +39,10 @@ export class PlaylistsComponent implements OnInit {
     loadPlaylist(playlist:Playlist) {
         this.songs = playlist.songs;
         this.selectedPlaylist = playlist;
+        //Scrolling to the playlist
+        $('html, body').animate({
+            scrollTop: $("#playlistDisplay").offset().top
+        }, 400);
     }
 
     assignPlaylist(playlist:Playlist) {

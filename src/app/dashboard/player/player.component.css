@@ -16,12 +16,19 @@ button {
     cursor: pointer;
 }
 
-youtube-player {
-    display: none;
+.pause {
+    background: url("../../../assets/images/play_music_bar.png") no-repeat !important;
+}
+
+.mute {
+    background: url("../../../assets/images/sound_off_music_bar.png") no-repeat !important;
 }
 
 @media(min-width: 740px) {
 
+    youtube-player {
+        display: none;
+    }
 
     #addButton {
         background: url("../../../assets/images/plus_player_button.png") no-repeat center;
@@ -139,10 +146,6 @@ youtube-player {
         margin-right: 2%;
     }
 
-    .pause {
-        background: url("../../../assets/images/play_music_bar.png") no-repeat !important;
-    }
-
     #rightSong {
         background: url("../../../assets/images/right_next_song.png") no-repeat;
         width: 25px;
@@ -157,13 +160,15 @@ youtube-player {
         top: 6%;
         margin-left: 2%;
     }
-
-    .mute {
-        background: url("../../../assets/images/sound_off_music_bar.png") no-repeat !important;
-    }
 }
 
 @media(max-width: 740px) {
+
+    youtube-player {
+        height: 1px; width: 1px;
+        margin-top: 100%;
+        position: absolute;
+    }
 
     #playerContainer {
         color: white;
@@ -178,7 +183,7 @@ youtube-player {
         height: 25px;
         float: right;
         margin-right: 5%;
-        margin-top: 13%;
+        margin-top: 10px;
         vertical-align: top;
     }
 
@@ -203,10 +208,10 @@ youtube-player {
     #seekBar {
         display: block;
         float: left;
-        /*margin-left: 10%;*/
-        /*margin-right: 10%;*/
-        margin-bottom: 5%;
-        width: 100%;
+        margin-top: 10px;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
         height: 35px;
         vertical-align: top;
     }
@@ -218,11 +223,9 @@ youtube-player {
     }
 
     progress[value] {
-        width: 70%;
+        width: 80%;
         height: 4px;
-        /*margin-left: 5px;*/
-        /*margin-right: 5px;*/
-        /*vertical-align: middle;*/
+        margin-bottom: 4px;
         border-radius: 5px;
         border: 0;
         background-image:
@@ -268,8 +271,8 @@ youtube-player {
         background: url("../../../assets/images/left_next_song.png") no-repeat;
         background-size: 85%;
 
-        top: 35%;
-        margin-left: 15%;
+        top: 35px;
+        margin-left: 20%;
         position: relative;
         width: 25px;
         height: 19px;
@@ -281,7 +284,7 @@ youtube-player {
         width: 35px;
         height: 35px;
         position: relative;
-        top: 45%;
+        top: 40px;
         margin-left: 2%;
         margin-right: 2%;
     }
@@ -289,7 +292,7 @@ youtube-player {
     #rightSong {
         background: url("../../../assets/images/right_next_song.png") no-repeat;
         background-size: 85%;
-        top: 35%;
+        top: 35px;
         position: relative;
         width: 25px;
         height: 19px;
@@ -301,8 +304,16 @@ youtube-player {
         width: 30px;
         height: 25px;
         position: relative;
-        top: 40% !important;
+        top: 40px !important;
         margin-left: 2%;
+    }
+
+    .mute {
+        background-size: 80% !important;
+    }
+
+    .pause {
+        background-size: 85% !important;
     }
 
 }

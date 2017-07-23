@@ -3,7 +3,9 @@ import {Album} from "../../shared/album.model";
 import {Song} from "../../shared/song.model";
 import {AuthService} from "../../auth/auth.service";
 import {MusicService} from "../../shared/music.service";
+import {Router} from "@angular/router";
 import * as $ from 'jquery';
+
 
 @Component({
     selector: 'app-radio',
@@ -32,6 +34,12 @@ export class RadioComponent implements OnInit {
         }
         for(let song of this.songs) song.album = album;
         this.selectedAlbum = album;
+
+        //Scrolling to the playlist
+        $('html, body').animate({
+            scrollTop: $("#playlistDisplay").offset().top
+        }, 400);
+
     }
 
     playSong(song:Song) {

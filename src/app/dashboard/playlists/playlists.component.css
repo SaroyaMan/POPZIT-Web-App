@@ -237,7 +237,7 @@
         font-family: "Futura PT", sans-serif;
         display: block;
         width: 90%;
-        margin: 2% 5% 20% 7%;
+        margin: 2% 5% 27% 7%;
 
     }
 
@@ -291,7 +291,7 @@
         border: 0;
         background: #ffed00;
         color: black;
-        font-size: 16px;
+        font-size: 4vw;
         font-weight: bold;
     }
 

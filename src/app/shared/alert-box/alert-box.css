@@ -87,7 +87,6 @@
     /* Modal Content */
     .modal-content {
         color: #979797;
-        font-size: medium;
         font-family: "Futura PT", sans-serif;
         position: relative;
         background-color: #fefefe;
@@ -101,4 +100,7 @@
         animation-name: animatetop;
         animation-duration: 0.5s
     }
+
+    h2 {  font-size: 5vw;  }
+    p {  font-size: 3vw;  }
 }
