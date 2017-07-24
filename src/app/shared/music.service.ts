@@ -126,9 +126,7 @@ export class MusicService {
         return this.http.get(`https://popzit-ws.herokuapp.com/music/song?artist=${artist}&track=${track}`)
             .map( (response) => {
                 const searchSongJson = response.json();
-                let imgPath = searchSongJson.imagePath === 'unknown' ?
-                    '/assets/images/unknown_album.png' : searchSongJson.imagePath;
-                return new Song(track, artist, null, new Album(artist, searchSongJson.album, imgPath))
+                return new Song(track, artist, null, new Album(artist, searchSongJson.album, searchSongJson.imagePath))
             })
             .catch( (error:Response) =>
                 Observable.throw(error.json())

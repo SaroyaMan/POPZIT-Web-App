@@ -1,6 +1,15 @@
 <section id="playerContainer">
     <button id="addButton" (click)="addToPlaylist()"></button>
-    <img id="albumPicture" src="{{song.album.imagePath}}" alt="{{song.album.name}}">
+    <!--<img-->
+         <!--id="albumPicture"-->
+         <!--src="{{song.album.imagePath === 'unknown' ? '../../../assets/images/unknown_album.png' : song.album.imagePath}}"-->
+         <!--alt="{{song.album.name}}"-->
+         <!--title="{{song.album.name}}">-->
+    <div id="albumPicture"
+         title="{{song.album.name}}"
+         [ngStyle]="{'background': song.album.imagePath !== 'unknown' ? 'url(' + song.album.imagePath + ') no-repeat' : true }"
+         [ngClass]="{noCover : song.album.imagePath === 'unknown' || !song.album.imagePath}">
+    </div>
     <section id="songDetails">
         <p>{{song.name | shorten}}</p>
         <span>{{song.artist}}</span>
