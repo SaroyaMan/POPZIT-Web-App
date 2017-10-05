@@ -1,7 +1,7 @@
 # APP-POPZIT
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
-The Web App hosts on github page of this repo: https://saroyaman.github.io/POPZIT-Web-App/#/home
+The Web App hosts on github page of this repo: https://saroyaman.github.io/POPZIT-Web-App
 
 ## Development server
 
